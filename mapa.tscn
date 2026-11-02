@@ -1,9 +1,16 @@
 [gd_scene format=3 uid="uid://cg5kwwg0csvo3"]
 
+[ext_resource type="Script" uid="uid://cw6p33q36rgmm" path="res://personaje.gd" id="1_2jh14"]
+[ext_resource type="Script" uid="uid://dawcw520ahx6l" path="res://camara.gd" id="2_camara"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_g7b7a"]
 size = Vector3(9.182434, 0.1293335, 10.028336)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g7b7a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_017mp"]
+vertex_color_is_srgb = true
+albedo_color = Color(0.027507301, 0.19230723, 1, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hqkgv"]
 
@@ -24,12 +31,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.261034, -0.052944183, -0.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25039673, 0.05923462, 0.13625336)
 shape = SubResource("BoxShape3D_g7b7a")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1276053676]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.3135557)
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1276053676 groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 3.3135557)
+script = ExtResource("1_2jh14")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1674571815]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94501376, 0)
 mesh = SubResource("CapsuleMesh_g7b7a")
+surface_material_override/0 = SubResource("StandardMaterial3D_017mp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=731039071]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95565724, 0)
@@ -37,6 +46,8 @@ shape = SubResource("CapsuleShape3D_hqkgv")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=140521929]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6504586, 2.9790878)
+current = true
+script = ExtResource("2_camara")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1478458668]
 environment = SubResource("Environment_6qx4q")
