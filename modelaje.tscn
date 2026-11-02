@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://rwgdlmb5cxk1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qx4q"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyc6d"]
+albedo_color = Color(0.30588236, 0.30588236, 0.30588236, 1)
+albedo_texture_msdf = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7b7a"]
+albedo_color = Color(0.30499926, 0.3049993, 0.3049993, 1)
+
+[node name="Node3D" type="Node3D" unique_id=1157331082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.063253194, 0)
+
+[node name="pecho" type="CSGCylinder3D" parent="." unique_id=539897976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.084481, 1.270998, 0.39112294)
+radius = 0.37548828
+height = 0.9161835
+material = SubResource("StandardMaterial3D_6qx4q")
+
+[node name="pierna derecha" type="CSGCylinder3D" parent="pecho" unique_id=1028010382]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17808795, -0.89338255, 0.01830089)
+radius = 0.1850586
+height = 0.8815155
+material = SubResource("StandardMaterial3D_gyc6d")
+
+[node name="pierna izquierda" type="CSGCylinder3D" parent="pecho" unique_id=2145060250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16811347, -0.89338255, 0.01830089)
+radius = 0.1850586
+height = 0.8815155
+material = SubResource("StandardMaterial3D_g7b7a")
+
+[node name="brazo derecho" type="CSGCylinder3D" parent="pecho" unique_id=1349929942]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48366356, -0.08889496, -0.021820009)
+radius = 0.1508789
+height = 1.0375977
+
+[node name="brazo izquierdo" type="CSGCylinder3D" parent="pecho" unique_id=436184284]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.47100747, -0.08889496, -0.021820009)
+radius = 0.1508789
+height = 1.0375977
+
+[node name="cabeza" type="CSGCylinder3D" parent="pecho" unique_id=333003160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005744666, 0.6751456, 0.01811707)
+radius = 0.26708984
+height = 0.4227295
