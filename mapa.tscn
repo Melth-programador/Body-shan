@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dawcw520ahx6l" path="res://camara.gd" id="2_camara"]
 [ext_resource type="Script" uid="uid://bbtoqgt6glixs" path="res://joystick.gd" id="2_q8ihy"]
 [ext_resource type="PackedScene" uid="uid://rwgdlmb5cxk1" path="res://modelaje.tscn" id="3_lrjei"]
+[ext_resource type="Script" uid="uid://i23f07ebavgv" path="res://mobile_controls.gd" id="4_mobile"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g7b7a"]
 radius = 0.61865234
@@ -30,14 +31,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12797251, -3.8011842)
 script = ExtResource("1_2jh14")
 
 [node name="personaje" parent="CharacterBody3D" unique_id=1157331082 instance=ExtResource("3_lrjei")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.083153725, 0.03704378, -0.5628996)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1597505458]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016817093, 1.1779993, -0.1297617)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2180176, 0)
 shape = SubResource("CapsuleShape3D_g7b7a")
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=140521929]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.044332623, 1.9662596, -0.24902487)
+[node name="Camera3D" type="Camera3D" parent="." unique_id=140521929]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0489, -0.8468)
 current = true
 script = ExtResource("2_camara")
 
@@ -86,7 +86,6 @@ middle_mouse_paste_enabled = false
 empty_selection_clipboard_enabled = false
 
 [node name="VirtualJoystick" type="VirtualJoystick" parent="." unique_id=1617299584]
-modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0.98978823, 0.98978823, 0.9897881, 1)
 anchors_preset = -1
 anchor_left = 0.143
@@ -97,10 +96,15 @@ offset_left = -199.73601
 offset_top = -195.06403
 offset_right = 200.26399
 offset_bottom = 194.93597
+joystick_mode = 1
 joystick_size = 165.0
 tip_size = 87.0
-deadzone_ratio = 0.55
+deadzone_ratio = 0.15
 clampzone_ratio = 0.93
+action_left = &"move_left"
+action_right = &"move_right"
+action_up = &"move_forward"
+action_down = &"move_back"
 script = ExtResource("2_q8ihy")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=919607263]
@@ -119,3 +123,45 @@ material = SubResource("StandardMaterial3D_4baqv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=843161074]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25039673, 0.05923462, -4.8005104)
 shape = SubResource("BoxShape3D_g7b7a")
+
+[node name="MobileControls" type="Control" parent="." unique_id=1152381071]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_mobile")
+
+[node name="JumpButton" type="Button" parent="MobileControls" unique_id=1348266930]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -200.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 26
+text = "SALTO"
+
+[node name="SprintButton" type="Button" parent="MobileControls" unique_id=222977796]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -380.0
+offset_top = -200.0
+offset_right = -220.0
+offset_bottom = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 26
+text = "CORRER"

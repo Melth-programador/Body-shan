@@ -17,6 +17,7 @@
 #
 # CONTROLES:
 #   - Ratón              : girar la cámara alrededor del jugador.
+#   - Arrastrar un dedo  : girar la cámara en pantallas táctiles.
 #   - Rueda del ratón    : acercar / alejar.
 #   - Esc                : liberar el cursor.
 #   - Clic               : volver a capturar el cursor.
@@ -59,6 +60,9 @@ extends Camera3D
 ## (mínimo, máximo e incremento de la barra deslizante).
 @export_range(0.0001, 0.02, 0.0001) var mouse_sensitivity: float = 0.0025
 
+## Sensibilidad táctil: radianes de giro por cada píxel que se arrastra el dedo.
+@export_range(0.0001, 0.02, 0.0001) var touch_sensitivity: float = 0.004
+
 ## Límite inferior de la inclinación vertical, en grados.
 ## Los valores negativos colocan la cámara por debajo del jugador.
 @export var min_pitch_degrees: float = -60.0
@@ -97,6 +101,15 @@ var _pitch: float = deg_to_rad(10.0)
 ## rayo de colisión de la cámara y que esta no choque con el propio personaje.
 var _target_rid: RID = RID()
 
+## Indica si la sesión actual se controla con pantalla táctil. Se calcula en
+## _ready() y sirve para elegir entre la entrada de ratón y la entrada táctil.
+var _is_touch_device: bool = false
+
+## Índice del dedo que está girando la cámara; -1 si ninguno. Guardar el índice
+## permite ignorar los dedos que están usando el joystick o los botones y
+## admite varios toques a la vez sin mezclar sus movimientos.
+var _look_touch_index: int = -1
+
 
 # -----------------------------------------------------------------------------
 # MÉTODOS DEL CICLO DE VIDA
@@ -104,8 +117,13 @@ var _target_rid: RID = RID()
 
 ## _ready() es un método virtual del motor: se ejecuta una sola vez, cuando el
 ## nodo ya está en el árbol de escena y antes del primer fotograma.
-## Aquí se resuelve el objetivo, se guarda su RID y se captura el ratón.
+## Aquí se resuelve el objetivo, se guarda su RID y se configura el ratón.
 func _ready() -> void:
+	# OS.has_feature("mobile") es true en Android e iOS, mientras que
+	# DisplayServer.is_touchscreen_available() también detecta pantallas
+	# táctiles conectadas a un ordenador.
+	_is_touch_device = OS.has_feature("mobile") or DisplayServer.is_touchscreen_available()
+
 	# Si el objetivo no se asignó en el Inspector, se busca en el árbol de
 	# escena el primer nodo que pertenezca al grupo "player".
 	# "as Node3D" convierte el resultado al tipo esperado (o null si no lo es).
@@ -119,13 +137,25 @@ func _ready() -> void:
 
 	# MOUSE_MODE_CAPTURED oculta el cursor y lo mantiene dentro de la ventana.
 	# Así el ratón sirve para girar la cámara y no para mover un puntero.
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	# En táctil no se captura: no hay cursor que ocultar y la captura puede
+	# interferir con los eventos de toque.
+	if _is_touch_device:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 ## _unhandled_input() recibe los eventos de entrada que no ha consumido antes
 ## ningún Control de la interfaz (por ejemplo, un botón). Es el lugar adecuado
 ## para la entrada de la cámara.
 func _unhandled_input(event: InputEvent) -> void:
+	# En un dispositivo táctil se ignora por completo la entrada de ratón
+	# (incluida la que el sistema emula a partir de los toques) y se usa
+	# exclusivamente el manejo de dedos de _handle_touch_look().
+	if _is_touch_device:
+		_handle_touch_look(event)
+		return
+
 	# --- Movimiento del ratón ---------------------------------------------
 	# "is" comprueba que el evento sea realmente un movimiento de ratón.
 	# Solo se gira la cámara si el ratón está capturado.
@@ -171,6 +201,37 @@ func _unhandled_input(event: InputEvent) -> void:
 				# El guion bajo "_" es el caso por defecto: cualquier otro
 				# clic (izquierdo, derecho, etc.) vuelve a capturar el ratón.
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+## Gira la cámara con un dedo. Los toques que caen sobre controles de la
+## interfaz (joystick o botones) los consume la GUI y no llegan hasta aquí,
+## así que arrastrar fuera de esos controles es lo que mueve la vista.
+func _handle_touch_look(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		# Al apoyar el primer dedo se recuerda su índice. Si ya había un dedo
+		# girando la cámara, el nuevo se ignora para no mezclar movimientos.
+		if event.pressed:
+			if _look_touch_index == -1:
+				_look_touch_index = event.index
+		# Al levantar ese mismo dedo se libera la cámara para el siguiente.
+		elif event.index == _look_touch_index:
+			_look_touch_index = -1
+	# Solo los arrastres del dedo que empezó el giro mueven la cámara.
+	elif event is InputEventScreenDrag and event.index == _look_touch_index:
+		add_look(event.relative)
+		# Se marca el evento como atendido para que ningún otro nodo lo repita.
+		get_viewport().set_input_as_handled()
+
+
+## Aplica un desplazamiento relativo (en píxeles) a los ángulos de la órbita.
+## Usa touch_sensitivity en lugar de mouse_sensitivity y comparte la misma
+## lógica de límites que el ratón: yaw se envuelve y pitch se limita.
+func add_look(relative: Vector2) -> void:
+	_yaw = wrapf(_yaw - relative.x * touch_sensitivity, -PI, PI)
+	_pitch = clampf(
+		_pitch + relative.y * touch_sensitivity,
+		deg_to_rad(min_pitch_degrees),
+		deg_to_rad(max_pitch_degrees))
 
 
 ## _process() es un método virtual que el motor llama en cada fotograma

@@ -13,6 +13,9 @@
 #   - WASD o flechas : desplazarse en relación a la cámara.
 #   - Shift          : correr (multiplica la velocidad).
 #   - Espacio        : saltar (solo desde el suelo).
+#   - Joystick táctil: desplazarse en móvil.
+#   - Botón SALTO    : saltar en móvil.
+#   - Botón CORRER   : correr mientras se mantiene pulsado en móvil.
 #
 # El movimiento es horizontal, con aceleración y desaceleración, gravedad
 # cuando el cuerpo está en el aire y reaparición si el jugador cae del mapa.
@@ -69,6 +72,15 @@ var _gravity: float = 9.8
 ## Posición del mundo a la que el jugador vuelve si se cae del mapa.
 var _spawn_position: Vector3 = Vector3.ZERO
 
+## Salto solicitado por el botón táctil. El botón puede pulsarse en cualquier
+## momento, así que la petición se guarda aquí y se consume en el siguiente
+## paso de física, igual que "Input.is_action_just_pressed".
+var _jump_requested: bool = false
+
+## Indica si el botón táctil de correr está siendo pulsado. Equivale a
+## mantener Shift en teclado.
+var _touch_sprint: bool = false
+
 
 # -----------------------------------------------------------------------------
 # MÉTODOS DEL CICLO DE VIDA
@@ -90,6 +102,18 @@ func _ready() -> void:
 	_spawn_position = global_position
 
 
+## Solicita un salto desde los controles táctiles. La llama mobile_controls.gd
+## mediante call_group("player", "request_jump") al pulsar el botón SALTO.
+func request_jump() -> void:
+	_jump_requested = true
+
+
+## Activa o desactiva la carrera desde el botón táctil. La llama
+## mobile_controls.gd al pulsar y soltar el botón CORRER.
+func set_touch_sprint(pressed: bool) -> void:
+	_touch_sprint = pressed
+
+
 ## _physics_process() es un método virtual que el motor llama en cada paso de
 ## física (60 veces por segundo por defecto). Es el lugar correcto para mover
 ## cuerpos físicos, porque el movimiento queda sincronizado con las colisiones.
@@ -103,13 +127,19 @@ func _physics_process(delta: float) -> void:
 	# Si no lo está, se aplica gravedad: se resta a la velocidad vertical
 	# (velocity.y) la gravedad multiplicada por el tiempo transcurrido.
 	# "velocity" es una propiedad integrada de CharacterBody3D.
+	# Se combinan el teclado y el botón táctil: basta con que cualquiera de los
+	# dos pida el salto. La petición táctil se borra enseguida para que no se
+	# repita en los siguientes pasos de física.
+	var wants_jump := Input.is_action_just_pressed("jump") or _jump_requested
+	_jump_requested = false
+
 	if not is_on_floor():
 		velocity.y -= _gravity * delta
 
 	# Si está en el suelo y el jugador acaba de pulsar "jump", se asigna de
 	# golpe una velocidad vertical positiva. "just_pressed" evita que mantener
 	# la tecla pulsada produzca saltos repetidos.
-	elif Input.is_action_just_pressed("jump"):
+	elif wants_jump:
 		velocity.y = jump_velocity
 
 	# =========================================================================
@@ -170,7 +200,8 @@ func _physics_process(delta: float) -> void:
 
 	# Si se mantiene pulsado "sprint" (Shift), se multiplica la velocidad.
 	# is_action_pressed() es true mientras la acción siga pulsada.
-	if Input.is_action_pressed("sprint"):
+	# Se corre si se mantiene Shift (teclado) o el botón CORRER (táctil).
+	if Input.is_action_pressed("sprint") or _touch_sprint:
 		current_speed *= sprint_multiplier
 
 	# Vector de velocidad al que se quiere llegar: dirección * velocidad.
