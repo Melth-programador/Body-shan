@@ -1,0 +1,46 @@
+PLAN PARA AGREGAR JOYSTICK TÁCTIL A BODY-SHAN
+
+OBJETIVO
+Agregar controles táctiles para jugar en Android/iOS (Godot Android Editor) manteniendo teclado + ratón en PC.
+
+ENFOQUE
+- Joystick fijo abajo-izquierda (recomendado)
+- Botón SALTO abajo-derecha
+- Botón CORRER abajo-derecha (o junto a salto)
+- Mirar arrastrando el resto de la pantalla (solo en móvil)
+- UI solo visible en móvil (OS.has_feature("mobile") o DisplayServer.is_touchscreen_available())
+- Combinar entrada: teclado + táctil (no reemplazar). Usar .limit_length(1)
+- Cámara en móvil: NO capturar ratón. Exponer funciones add_look() para usar con arrastre táctil
+
+ARCHIVOS NUEVOS
+- joystick_touch.gd  (Control): dibujado con _draw(), deadzone, clamp, salida Vector2, maneja InputEventScreenTouch/Drag
+- ui_movil.gd        (CanvasLayer/Control): gestiona UI, mirada táctil, salto/correr, expone move_vector, sprint_held, consume_jump()
+- ui_movil.tscn      (escena): layout joystick + botones
+
+ARCHIVOS A MODIFICAR
+- personaje.gd : leer teclado + ui_movil.move_vector, salto con jump o consume_jump(), sprint con sprint o sprint_held
+- camara.gd    : detectar móvil, skip mouse capture, agregar add_look(delta_x, delta_y), mantener lógica PC
+- mapa.tscn    : instanciar ui_movil.tscn (por encima)
+- project.godot: Display/Window/Handheld/Orientation = "sensor_landscape" o "landscape"
+
+FLUJO
+1. Joystick genera Vector2 y lo pone como acción (o lo lee directamente). Alternativa: leer directamente desde ui_movil.
+2. Arrastre fuera de joystick/botones rota cámara con add_look
+3. Botón salto: en cola (un solo uso) porque personaje usa is_action_just_pressed("jump")
+4
+5
+6. Pinza opcional para zoom (futuro)
+
+PRUEBAS
+- PC: Emulate Touch From Mouse para probar
+- Android: Godot Android Editor / APK. Multitáctil, sin captura ratón, horizontal
+- Verificar git pull en móvil trae cambios
+
+NOTAS
+- Usar set_input_as_handled() para no interferir con UI
+- Ignorar InputEventMouseMotion emulados en móvil
+- No duplicar deadzone excesiva
+- Mantener orientación landscape para mejor control
+
+FECHA: 2026-11-02
+PROYECTO: Body-shan
