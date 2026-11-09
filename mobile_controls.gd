@@ -5,7 +5,8 @@
 #
 # QUÉ HACE:
 # - Detecta si el juego se está ejecutando en un dispositivo táctil (móvil).
-# - Muestra u oculta los controles táctiles según esa detección.
+# - Muestra u oculta los controles táctiles según esa detección, pudiendo
+#   forzarlos visibles en escritorio con "force_show_on_desktop".
 # - Conecta los botones "SALTO" y "CORRER" con el jugador.
 #
 # CÓMO SE COMUNICA CON EL JUGADOR:
@@ -26,11 +27,20 @@ extends Control
 
 
 # -----------------------------------------------------------------------------
+# PARÁMETROS AJUSTABLES DESDE EL INSPECTOR
+# -----------------------------------------------------------------------------
+
+## Si es true, los controles táctiles (y el joystick) se muestran también en
+## escritorio. Sirve para probar la interfaz móvil desde la vista de PC.
+@export var force_show_on_desktop: bool = true
+
+
+# -----------------------------------------------------------------------------
 # VARIABLES INTERNAS (no visibles en el Inspector)
 # -----------------------------------------------------------------------------
 
 ## True si la sesión actual usa pantalla táctil. En escritorio vale false y
-## los controles permanecen ocultos.
+## los controles permanecen ocultos, salvo que force_show_on_desktop sea true.
 var _is_touch_device: bool = false
 
 
@@ -47,15 +57,19 @@ func _ready() -> void:
 	# escritorio con pantalla táctil y las pruebas en el editor.
 	_is_touch_device = OS.has_feature("mobile") or DisplayServer.is_touchscreen_available()
 
-	# El nodo completo (y sus botones) solo se muestra en dispositivos
-	# táctiles. Al ocultar el Control también se ocultan sus hijos.
-	visible = _is_touch_device
+	# Los controles se muestran en dispositivos táctiles o si se fuerza desde
+	# el Inspector para probarlos en la vista de PC.
+	var controls_visible := _is_touch_device or force_show_on_desktop
+
+	# El nodo completo (y sus botones) se muestra u oculta según lo anterior.
+	# Al ocultar el Control también se ocultan sus hijos.
+	visible = controls_visible
 
 	# El joystick es un nodo hermano: se oculta en escritorio para no estorbar
-	# con el ratón y se deja visible en móvil.
+	# con el ratón y se deja visible en móvil (o si se fuerza en PC).
 	var joystick := get_parent().get_node_or_null("VirtualJoystick")
 	if joystick is CanvasItem:
-		joystick.visible = _is_touch_device
+		joystick.visible = controls_visible
 
 	# "button_down" se emite al apoyar el dedo (o pulsar el botón) y
 	# "button_up" al levantarlo. El salto se pide al bajar para que responda
@@ -69,7 +83,7 @@ func _ready() -> void:
 ## pulsado (por ejemplo, al cambiar de escena), se avisa al jugador para que
 ## no se quede corriendo indefinidamente.
 func _exit_tree() -> void:
-	if _is_touch_device:
+	if _is_touch_device or force_show_on_desktop:
 		get_tree().call_group("player", "set_touch_sprint", false)
 
 

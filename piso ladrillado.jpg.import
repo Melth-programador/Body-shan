@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2adtsdd0x8kc"
-path.etc2="res://.godot/imported/piso ladrillado.jpg-94aebe6a81d825d40761a08a9816c7b3.etc2.ctex"
+path.s3tc="res://.godot/imported/piso ladrillado.jpg-94aebe6a81d825d40761a08a9816c7b3.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://piso ladrillado.jpg"
-dest_files=["res://.godot/imported/piso ladrillado.jpg-94aebe6a81d825d40761a08a9816c7b3.etc2.ctex"]
+dest_files=["res://.godot/imported/piso ladrillado.jpg-94aebe6a81d825d40761a08a9816c7b3.s3tc.ctex"]
 
 [params]
 

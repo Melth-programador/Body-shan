@@ -1,0 +1,20 @@
+[gd_resource type="AnimationLibrary" format=3]
+
+[ext_resource type="Animation" path="res://animaciones/reset.tres" id="1_p2ty4"]
+[ext_resource type="Animation" path="res://animaciones/aterrizar.tres" id="2_8pvrt"]
+[ext_resource type="Animation" path="res://animaciones/caer.tres" id="3_r1vwq"]
+[ext_resource type="Animation" path="res://animaciones/caminar.tres" id="4_wndet"]
+[ext_resource type="Animation" path="res://animaciones/correr.tres" id="5_bjdxh"]
+[ext_resource type="Animation" path="res://animaciones/reposo.tres" id="6_oowvx"]
+[ext_resource type="Animation" path="res://animaciones/saltar.tres" id="7_qsw2q"]
+
+[resource]
+_data = {
+&"RESET": ExtResource("1_p2ty4"),
+&"aterrizar": ExtResource("2_8pvrt"),
+&"caer": ExtResource("3_r1vwq"),
+&"caminar": ExtResource("4_wndet"),
+&"correr": ExtResource("5_bjdxh"),
+&"reposo": ExtResource("6_oowvx"),
+&"saltar": ExtResource("7_qsw2q")
+}

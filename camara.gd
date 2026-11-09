@@ -21,6 +21,11 @@
 #   - Rueda del ratón    : acercar / alejar.
 #   - Esc                : liberar el cursor.
 #   - Clic               : volver a capturar el cursor.
+#
+# NOTA: si el proyecto tiene activado "Emulate Touch From Mouse" (Ajustes del
+# proyecto > Dispositivos de entrada > Puntero), la cámara funciona como en
+# móvil: el cursor queda visible y se gira arrastrando con el ratón. Así se
+# pueden usar los controles táctiles (joystick y botones) desde el PC.
 # =============================================================================
 
 # Hereda de Camera3D: nodo que representa la cámara con la que se renderiza
@@ -122,7 +127,16 @@ func _ready() -> void:
 	# OS.has_feature("mobile") es true en Android e iOS, mientras que
 	# DisplayServer.is_touchscreen_available() también detecta pantallas
 	# táctiles conectadas a un ordenador.
-	_is_touch_device = OS.has_feature("mobile") or DisplayServer.is_touchscreen_available()
+	# "emulate_touch_from_mouse" hace que el ratón genere eventos táctiles,
+	# de modo que en PC se pueden usar el joystick y los botones con el ratón.
+	# En ese caso la cámara también se comporta como en móvil (sin capturar el
+	# cursor y girando con el arrastre).
+	_is_touch_device = (
+		OS.has_feature("mobile")
+		or DisplayServer.is_touchscreen_available()
+		or bool(ProjectSettings.get_setting(
+			"input_devices/pointing/emulate_touch_from_mouse", false))
+	)
 
 	# Si el objetivo no se asignó en el Inspector, se busca en el árbol de
 	# escena el primer nodo que pertenezca al grupo "player".

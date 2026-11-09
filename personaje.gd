@@ -59,6 +59,19 @@ extends CharacterBody3D
 ## se cayó del mapa y debe reaparecer en su punto inicial.
 @export var respawn_height: float = -12.0
 
+## Velocidad horizontal (m/s) por debajo de la cual se considera que el
+## jugador está quieto y la animación de caminar se detiene.
+@export var animation_speed_threshold: float = 0.2
+
+
+# -----------------------------------------------------------------------------
+# CONSTANTES
+# -----------------------------------------------------------------------------
+
+## Nombre exacto de la animación de caminar del modelo (incluye el espacio
+## final que tiene en el AnimationPlayer).
+const WALK_ANIMATION := "caminar "
+
 
 # -----------------------------------------------------------------------------
 # VARIABLES INTERNAS (no visibles en el Inspector)
@@ -81,6 +94,10 @@ var _jump_requested: bool = false
 ## mantener Shift en teclado.
 var _touch_sprint: bool = false
 
+## AnimationPlayer del modelo del personaje. Se busca en _ready() para no
+## depender de la ruta exacta del nodo.
+var _animation_player: AnimationPlayer = null
+
 
 # -----------------------------------------------------------------------------
 # MÉTODOS DEL CICLO DE VIDA
@@ -100,6 +117,19 @@ func _ready() -> void:
 	# global_position es la posición del nodo en coordenadas del mundo.
 	# Se guarda para poder volver aquí si el jugador se cae.
 	_spawn_position = global_position
+
+	# El AnimationPlayer vive dentro del modelo instanciado. find_child() lo
+	# busca en todos los descendientes, así no importa cómo se llame el nodo
+	# que contiene el modelo.
+	_animation_player = find_child("AnimationPlayer", true, false) as AnimationPlayer
+
+	# La animación de caminar debe repetirse mientras el jugador se mueve.
+	# Se activa el bucle en tiempo de ejecución para no depender de que el
+	# recurso ya venga configurado así.
+	if _animation_player and _animation_player.has_animation(WALK_ANIMATION):
+		var walk := _animation_player.get_animation(WALK_ANIMATION)
+		if walk:
+			walk.loop_mode = Animation.LOOP_LINEAR
 
 
 ## Solicita un salto desde los controles táctiles. La llama mobile_controls.gd
@@ -231,3 +261,35 @@ func _physics_process(delta: float) -> void:
 	if global_position.y < respawn_height:
 		global_position = _spawn_position
 		velocity = Vector3.ZERO
+
+	# =========================================================================
+	# 5) ANIMACIÓN DEL MODELO
+	# =========================================================================
+	_update_animation()
+
+
+## Reproduce la animación de caminar mientras el jugador se desplaza por el
+## suelo, la pausa al quedarse quieto y ajusta su velocidad a la del jugador.
+func _update_animation() -> void:
+	if _animation_player == null:
+		return
+
+	# Velocidad horizontal real (sin contar la caída/salto).
+	var horizontal_speed := Vector2(velocity.x, velocity.z).length()
+	var is_walking := is_on_floor() and horizontal_speed > animation_speed_threshold
+
+	if is_walking:
+		# Si aún no es la animación actual, se inicia. Si estaba pausada,
+		# play() sin argumentos la reanuda desde el fotograma donde quedó.
+		if _animation_player.current_animation != WALK_ANIMATION:
+			_animation_player.play(WALK_ANIMATION)
+		elif not _animation_player.is_playing():
+			_animation_player.play()
+
+		# La animación se acelera con la velocidad: al correr (Shift o botón
+		# CORRER) se ve más rápida que al caminar.
+		_animation_player.speed_scale = clampf(
+			horizontal_speed / speed, 0.5, sprint_multiplier + 0.2)
+	elif _animation_player.is_playing():
+		# Quieto o en el aire: se detiene la animación de caminar.
+		_animation_player.pause()

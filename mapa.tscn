@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cw6p33q36rgmm" path="res://personaje.gd" id="1_2jh14"]
 [ext_resource type="Texture2D" uid="uid://b2adtsdd0x8kc" path="res://piso ladrillado.jpg" id="1_5d3jg"]
-[ext_resource type="PackedScene" uid="uid://cawqy06asawru" path="res://personaje (v.0,16).tscn" id="2_2eut3"]
+[ext_resource type="PackedScene" uid="uid://cawqy06asawru" path="res://personaje (v.0,15).tscn" id="2_2eut3"]
 [ext_resource type="Script" uid="uid://dawcw520ahx6l" path="res://camara.gd" id="2_camara"]
 [ext_resource type="Script" uid="uid://bbtoqgt6glixs" path="res://joystick.gd" id="2_q8ihy"]
 [ext_resource type="Texture2D" uid="uid://4uaid5e8wgh" path="res://live 1.png" id="3_w30at"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dhy1psq5vkr7b" path="res://botón de saltar .png" id="6_auc41"]
 [ext_resource type="Texture2D" uid="uid://b16bpnk4r65r7" path="res://botón de correr .png" id="6_wan0n"]
 [ext_resource type="Texture2D" uid="uid://csu0simw4jlmv" path="res://pasto.jpg" id="8_rugew"]
-[ext_resource type="Texture2D" uid="uid://b6c8v1hkg35m6" path="res://escalera(textura)1.jpg" id="9_o68h1"]
+[ext_resource type="Texture2D" uid="uid://dgddxhuh1mjmx" path="res://escalera(textura)1.jpg" id="9_o68h1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g7b7a"]
 radius = 0.61865234
@@ -86,11 +86,11 @@ transform = Transform3D(-0.9996532, 0, -0.026332522, 0, 1, 0, 0.026332522, 0, -0
 script = ExtResource("1_2jh14")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1597505458]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1773682, 0)
+transform = Transform3D(1.0000019, 0, -1.6763806e-08, 0, 1, 0, 1.6763806e-08, 0, 1.0000019, 0, 1.1773682, 0)
 shape = SubResource("CapsuleShape3D_g7b7a")
 
 [node name="personaje (0,01)" parent="CharacterBody3D" unique_id=140242520 instance=ExtResource("2_2eut3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.034739494, 0.010305494, -0.19338584)
+transform = Transform3D(1.0000001, 0, -1.8626451e-09, 0, 1, 0, 1.8626451e-09, 0, 1.0000001, 0.0347395, 0.010305494, -0.19338608)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=140521929]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0489, -0.8468)
