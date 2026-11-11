@@ -5,7 +5,7 @@
 #
 # QUÉ HACE:
 # - Muestra el título del juego y tres botones:
-#     INICIAR JUEGO -> carga la escena del mapa ("mapa.tscn").
+#     INICIAR JUEGO -> carga la escena del escenario ("escenario.tscn").
 #     CINEMÁTICA    -> reproduce el video de introducción.
 #     CÓMIC         -> abre el cómic del juego.
 # - Todos los cambios de escena usan un fundido a negro.
@@ -23,7 +23,7 @@ extends Control
 # -----------------------------------------------------------------------------
 
 ## Escena que se carga al pulsar INICIAR JUEGO.
-@export_file("*.tscn") var escena_juego: String = "res://mapa.tscn"
+@export_file("*.tscn") var escena_juego: String = "res://escenario.tscn"
 
 ## Escena que se carga al pulsar CINEMÁTICA.
 @export_file("*.tscn") var escena_cinematica: String = "res://cinematica.tscn"
