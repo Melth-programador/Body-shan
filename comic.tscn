@@ -1,0 +1,226 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://comic.gd" id="1_comic"]
+[ext_resource type="Texture2D" path="res://Screenshot_20261109-214510.jpg" id="2_pagina"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_normal"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.09019608, 0.05490196, 0.03137255, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.64, 0.2, 0.85)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.21960784, 0.12156863, 0.050980393, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.8, 0.35, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pressed"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.34901962, 0.18039216, 0.050980393, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.7, 0.25, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_disabled"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.11764706, 0.09803922, 0.08627451, 0.7)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.45, 0.4, 0.5)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.05882353, 0.043137256, 0.03137255, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.64, 0.2, 0.7)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[node name="Comic" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_comic")
+
+[node name="Fondo" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.03529412, 0.02745098, 0.023529412, 1)
+
+[node name="Pagina" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_pagina")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BotonVolver" type="Button" parent="."]
+custom_minimum_size = Vector2(180, 54)
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(1, 0.92941177, 0.81960785, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8, 0.8, 0.8, 0.4)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_disabled")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hover")
+text = "◂ VOLVER"
+
+[node name="Pista" type="Label" parent="."]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 0.55
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -72.0
+offset_right = 0.0
+offset_bottom = -16.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.6)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.85)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 15
+text = "Pellizca o usa la rueda para ampliar · Arrastra para mover"
+autowrap_mode = 2
+
+[node name="Zoom" type="PanelContainer" parent="."]
+layout_mode = 1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -310.0
+offset_top = -88.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Controles" type="HBoxContainer" parent="Zoom"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="BotonMenos" type="Button" parent="Zoom/Controles"]
+custom_minimum_size = Vector2(56, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92941177, 0.81960785, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8, 0.8, 0.8, 0.4)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_disabled")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hover")
+text = "−"
+
+[node name="BotonMas" type="Button" parent="Zoom/Controles"]
+custom_minimum_size = Vector2(56, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92941177, 0.81960785, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8, 0.8, 0.8, 0.4)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_disabled")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hover")
+text = "+"
+
+[node name="BotonAjustar" type="Button" parent="Zoom/Controles"]
+custom_minimum_size = Vector2(110, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92941177, 0.81960785, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8, 0.8, 0.8, 0.4)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_disabled")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hover")
+text = "AJUSTAR"
+
+[node name="Fade" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

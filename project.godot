@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="body-shan"
-run/main_scene="uid://cg5kwwg0csvo3"
+run/main_scene="res://menu_inicio.tscn"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 

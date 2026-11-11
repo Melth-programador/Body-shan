@@ -1,0 +1,212 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://menu_inicio.gd" id="1_menu"]
+[ext_resource type="Texture2D" path="res://pasto.jpg" id="2_fondo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_normal"]
+content_margin_left = 24.0
+content_margin_top = 10.0
+content_margin_right = 24.0
+content_margin_bottom = 10.0
+bg_color = Color(0.09019608, 0.05490196, 0.03137255, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.64, 0.2, 0.9)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
+content_margin_left = 24.0
+content_margin_top = 10.0
+content_margin_right = 24.0
+content_margin_bottom = 10.0
+bg_color = Color(0.21960784, 0.12156863, 0.050980393, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.8, 0.35, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pressed"]
+content_margin_left = 24.0
+content_margin_top = 10.0
+content_margin_right = 24.0
+content_margin_bottom = 10.0
+bg_color = Color(0.34901962, 0.18039216, 0.050980393, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.7, 0.25, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_disabled"]
+content_margin_left = 24.0
+content_margin_top = 10.0
+content_margin_right = 24.0
+content_margin_bottom = 10.0
+bg_color = Color(0.11764706, 0.09803922, 0.08627451, 0.7)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.45, 0.4, 0.5)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="MenuInicio" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Fondo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_fondo")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Oscurecer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02745098, 0.043137256, 0.015686275, 0.78)
+
+[node name="Centro" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Contenido" type="VBoxContainer" parent="Centro"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Titulo" type="Label" parent="Centro/Contenido"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8509804, 0.5529412, 1)
+theme_override_colors/font_outline_color = Color(0.14901961, 0.05882353, 0.019607844, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.55)
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 6
+theme_override_font_sizes/font_size = 76
+text = "BODY SHAN"
+horizontal_alignment = 1
+
+[node name="Subtitulo" type="Label" parent="Centro/Contenido"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9019608, 0.7490196, 0.9)
+theme_override_colors/font_outline_color = Color(0.14901961, 0.05882353, 0.019607844, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 20
+text = "Aventura 3D"
+horizontal_alignment = 1
+
+[node name="Espacio" type="Control" parent="Centro/Contenido"]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="BotonJugar" type="Button" parent="Centro/Contenido"]
+custom_minimum_size = Vector2(360, 68)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.92941177, 0.81960785, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8, 0.8, 0.8, 0.4)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_disabled")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hover")
+text = "INICIAR JUEGO"
+
+[node name="BotonCinematica" type="Button" parent="Centro/Contenido"]
+custom_minimum_size = Vector2(360, 68)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.92941177, 0.81960785, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8, 0.8, 0.8, 0.4)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_disabled")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hover")
+text = "CINEMÁTICA"
+
+[node name="BotonComic" type="Button" parent="Centro/Contenido"]
+custom_minimum_size = Vector2(360, 68)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.92941177, 0.81960785, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.8, 0.8, 0.8, 0.4)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_disabled")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hover")
+text = "CÓMIC"
+
+[node name="Version" type="Label" parent="."]
+layout_mode = 1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -46.0
+offset_right = 400.0
+offset_bottom = -14.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.6)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+text = "versión.V(0,35)"
+
+[node name="Fade" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
