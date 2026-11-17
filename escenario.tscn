@@ -1,0 +1,1420 @@
+[gd_scene format=3 uid="uid://cxac7o2xubdsh"]
+
+[ext_resource type="Script" uid="uid://b02sopgykoftt" path="res://escenario.gd" id="1_escenario"]
+[ext_resource type="Script" uid="uid://cw6p33q36rgmm" path="res://personaje.gd" id="2_personaje"]
+[ext_resource type="PackedScene" uid="uid://cawqy06asawru" path="res://personaje (v.0,15).tscn" id="3_modelo"]
+[ext_resource type="Script" uid="uid://dawcw520ahx6l" path="res://camara.gd" id="4_camara"]
+[ext_resource type="Script" uid="uid://bbtoqgt6glixs" path="res://joystick.gd" id="5_joystick"]
+[ext_resource type="Script" uid="uid://i23f07ebavgv" path="res://mobile_controls.gd" id="6_mobile"]
+[ext_resource type="Texture2D" uid="uid://csu0simw4jlmv" path="res://pasto.jpg" id="7_pasto"]
+[ext_resource type="Texture2D" uid="uid://b2adtsdd0x8kc" path="res://piso ladrillado.jpg" id="8_ladrillo"]
+[ext_resource type="Texture2D" uid="uid://dgddxhuh1mjmx" path="res://escalera(textura)1.jpg" id="9_escalera"]
+[ext_resource type="Texture2D" uid="uid://dhy1psq5vkr7b" path="res://botón de saltar .png" id="10_salto"]
+[ext_resource type="Texture2D" uid="uid://b16bpnk4r65r7" path="res://botón de correr .png" id="11_correr"]
+[ext_resource type="Texture2D" uid="uid://n6rhw4i7lj5c" path="res://arbol1_2.png" id="12_arbol1"]
+[ext_resource type="Texture2D" uid="uid://nf3hiuff64ko" path="res://arbol2_2.jpg" id="13_arbol2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape_jugador"]
+radius = 0.61865234
+height = 2.3547363
+
+[sub_resource type="StandardMaterial3D" id="Mat_pasto"]
+albedo_texture = ExtResource("7_pasto")
+albedo_color = Color(0.92, 0.9, 0.78, 1)
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_cubo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape_cubo"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_ladrillo"]
+albedo_texture = ExtResource("8_ladrillo")
+albedo_color = Color(1, 0.95, 0.9, 1)
+roughness = 0.9
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="Mat_escalera"]
+albedo_texture = ExtResource("9_escalera")
+albedo_color = Color(0.95, 0.92, 0.88, 1)
+roughness = 0.9
+uv1_scale = Vector3(0.7, 0.7, 0.7)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="Mat_piedra"]
+albedo_texture = ExtResource("9_escalera")
+albedo_color = Color(0.72, 0.7, 0.66, 1)
+roughness = 0.95
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="Mat_dorado"]
+albedo_color = Color(1, 0.78, 0.25, 1)
+metallic = 0.7
+roughness = 0.35
+emission_enabled = true
+emission = Color(1, 0.62, 0.12, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_orbe"]
+radius = 0.7
+height = 1.4
+radial_segments = 24
+rings = 12
+
+[sub_resource type="StandardMaterial3D" id="Mat_madera"]
+albedo_texture = ExtResource("13_arbol2")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tronco"]
+top_radius = 0.25
+bottom_radius = 0.35
+height = 2.2
+radial_segments = 10
+
+[sub_resource type="StandardMaterial3D" id="Mat_hoja"]
+transparency = 2
+alpha_scissor_threshold = 0.35
+cull_mode = 2
+albedo_texture = ExtResource("12_arbol1")
+albedo_color = Color(0.92, 0.95, 0.8, 1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_copa"]
+radius = 1.4
+height = 2.2
+radial_segments = 12
+rings = 8
+
+[sub_resource type="ProceduralSkyMaterial" id="CieloMaterial"]
+sky_top_color = Color(0.22352941, 0.3764706, 0.6117647, 1)
+sky_horizon_color = Color(0.9058824, 0.59607846, 0.34509805, 1)
+ground_bottom_color = Color(0.18431373, 0.12941177, 0.09803922, 1)
+ground_horizon_color = Color(0.9058824, 0.59607846, 0.34509805, 1)
+sun_angle_max = 15.0
+
+[sub_resource type="Sky" id="Cielo"]
+sky_material = SubResource("CieloMaterial")
+
+[sub_resource type="Environment" id="Entorno"]
+background_mode = 2
+sky = SubResource("Cielo")
+ambient_light_source = 3
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.91764706, 0.64705884, 0.4509804, 1)
+fog_density = 0.003
+
+[node name="Escenario" type="Node3D" unique_id=154654869]
+script = ExtResource("1_escenario")
+
+[node name="Jugador" type="CharacterBody3D" parent="." unique_id=1560408818 groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 25)
+script = ExtResource("2_personaje")
+
+[node name="Colision" type="CollisionShape3D" parent="Jugador" unique_id=1356819391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1773682, 0)
+shape = SubResource("CapsuleShape_jugador")
+
+[node name="Personaje" parent="Jugador" unique_id=66254303 instance=ExtResource("3_modelo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, -0.19)
+
+[node name="Camara" type="Camera3D" parent="." unique_id=1132447856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 29)
+current = true
+script = ExtResource("4_camara")
+
+[node name="Mundo" type="Node3D" parent="."]
+
+[node name="Terreno" type="StaticBody3D" parent="Mundo"]
+transform = Transform3D(60, 0, 0, 0, 0.4, 0, 0, 0, 64, 0, -0.2, 0)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Terreno"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_pasto")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Terreno"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="Inicio" type="Node3D" parent="Mundo"]
+
+[node name="PisoInicio" type="StaticBody3D" parent="Mundo/Inicio"]
+transform = Transform3D(14, 0, 0, 0, 0.08, 0, 0, 0, 8, 0, 0.04, 26)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Inicio/PisoInicio"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Inicio/PisoInicio"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="ArbolInicioIzq" type="StaticBody3D" parent="Mundo/Inicio"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -5.4, 0, 27.4)
+
+[node name="Tronco" type="MeshInstance3D" parent="Mundo/Inicio/ArbolInicioIzq"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+mesh = SubResource("CylinderMesh_tronco")
+material_override = SubResource("Mat_madera")
+
+[node name="Copa" type="MeshInstance3D" parent="Mundo/Inicio/ArbolInicioIzq"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("SphereMesh_copa")
+material_override = SubResource("Mat_hoja")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Inicio/ArbolInicioIzq"]
+transform = Transform3D(0.6, 0, 0, 0, 2.4, 0, 0, 0, 0.6, 0, 1.2, 0)
+shape = SubResource("BoxShape_cubo")
+
+[node name="ArbolInicioDer" type="StaticBody3D" parent="Mundo/Inicio"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 5.4, 0, 27.4)
+
+[node name="Tronco" type="MeshInstance3D" parent="Mundo/Inicio/ArbolInicioDer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+mesh = SubResource("CylinderMesh_tronco")
+material_override = SubResource("Mat_madera")
+
+[node name="Copa" type="MeshInstance3D" parent="Mundo/Inicio/ArbolInicioDer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("SphereMesh_copa")
+material_override = SubResource("Mat_hoja")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Inicio/ArbolInicioDer"]
+transform = Transform3D(0.6, 0, 0, 0, 2.4, 0, 0, 0, 0.6, 0, 1.2, 0)
+shape = SubResource("BoxShape_cubo")
+
+[node name="Sendero" type="Node3D" parent="Mundo"]
+
+[node name="PisoSendero" type="StaticBody3D" parent="Mundo/Sendero"]
+transform = Transform3D(8, 0, 0, 0, 0.08, 0, 0, 0, 6, 0, 0.04, 19)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Sendero/PisoSendero"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Sendero/PisoSendero"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="Atrio" type="Node3D" parent="Mundo"]
+
+[node name="PisoAtrio" type="StaticBody3D" parent="Mundo/Atrio"]
+transform = Transform3D(24, 0, 0, 0, 0.08, 0, 0, 0, 6, 0, 0.04, 13)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Atrio/PisoAtrio"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Atrio/PisoAtrio"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="ArbolAtrioIzq" type="StaticBody3D" parent="Mundo/Atrio"]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, -9.6, 0, 13)
+
+[node name="Tronco" type="MeshInstance3D" parent="Mundo/Atrio/ArbolAtrioIzq"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+mesh = SubResource("CylinderMesh_tronco")
+material_override = SubResource("Mat_madera")
+
+[node name="Copa" type="MeshInstance3D" parent="Mundo/Atrio/ArbolAtrioIzq"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("SphereMesh_copa")
+material_override = SubResource("Mat_hoja")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Atrio/ArbolAtrioIzq"]
+transform = Transform3D(0.6, 0, 0, 0, 2.4, 0, 0, 0, 0.6, 0, 1.2, 0)
+shape = SubResource("BoxShape_cubo")
+
+[node name="ArbolAtrioDer" type="StaticBody3D" parent="Mundo/Atrio"]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 9.6, 0, 13)
+
+[node name="Tronco" type="MeshInstance3D" parent="Mundo/Atrio/ArbolAtrioDer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+mesh = SubResource("CylinderMesh_tronco")
+material_override = SubResource("Mat_madera")
+
+[node name="Copa" type="MeshInstance3D" parent="Mundo/Atrio/ArbolAtrioDer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("SphereMesh_copa")
+material_override = SubResource("Mat_hoja")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Atrio/ArbolAtrioDer"]
+transform = Transform3D(0.6, 0, 0, 0, 2.4, 0, 0, 0, 0.6, 0, 1.2, 0)
+shape = SubResource("BoxShape_cubo")
+
+[node name="Laberinto" type="Node3D" parent="Mundo"]
+
+[node name="PisoLaberinto" type="StaticBody3D" parent="Mundo/Laberinto"]
+transform = Transform3D(22, 0, 0, 0, 0.08, 0, 0, 0, 19.5, 0, 0.04, 0.25)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/PisoLaberinto"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/PisoLaberinto"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="MuroSurOeste" type="StaticBody3D" parent="Mundo/Laberinto"]
+transform = Transform3D(7, 0, 0, 0, 3, 0, 0, 0, 0.6, -7.5, 1.58, 10)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/MuroSurOeste"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/MuroSurOeste"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="MuroSurOeste_Tapa" type="MeshInstance3D" parent="Mundo/Laberinto"]
+transform = Transform3D(7.12, 0, 0, 0, 0.12, 0, 0, 0, 0.72, -7.5, 3.14, 10)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="MuroSurEste" type="StaticBody3D" parent="Mundo/Laberinto"]
+transform = Transform3D(7, 0, 0, 0, 3, 0, 0, 0, 0.6, 7.5, 1.58, 10)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/MuroSurEste"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/MuroSurEste"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="MuroSurEste_Tapa" type="MeshInstance3D" parent="Mundo/Laberinto"]
+transform = Transform3D(7.12, 0, 0, 0, 0.12, 0, 0, 0, 0.72, 7.5, 3.14, 10)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="MuroNorteOeste" type="StaticBody3D" parent="Mundo/Laberinto"]
+transform = Transform3D(7, 0, 0, 0, 3, 0, 0, 0, 0.6, -7.5, 1.58, -9.5)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/MuroNorteOeste"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/MuroNorteOeste"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="MuroNorteOeste_Tapa" type="MeshInstance3D" parent="Mundo/Laberinto"]
+transform = Transform3D(7.12, 0, 0, 0, 0.12, 0, 0, 0, 0.72, -7.5, 3.14, -9.5)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="MuroNorteEste" type="StaticBody3D" parent="Mundo/Laberinto"]
+transform = Transform3D(7, 0, 0, 0, 3, 0, 0, 0, 0.6, 7.5, 1.58, -9.5)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/MuroNorteEste"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/MuroNorteEste"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="MuroNorteEste_Tapa" type="MeshInstance3D" parent="Mundo/Laberinto"]
+transform = Transform3D(7.12, 0, 0, 0, 0.12, 0, 0, 0, 0.72, 7.5, 3.14, -9.5)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="MuroOeste" type="StaticBody3D" parent="Mundo/Laberinto"]
+transform = Transform3D(0.6, 0, 0, 0, 3, 0, 0, 0, 19.5, -11, 1.58, 0.25)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/MuroOeste"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/MuroOeste"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="MuroOeste_Tapa" type="MeshInstance3D" parent="Mundo/Laberinto"]
+transform = Transform3D(0.72, 0, 0, 0, 0.12, 0, 0, 0, 19.62, -11, 3.14, 0.25)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="MuroEsteNorte" type="StaticBody3D" parent="Mundo/Laberinto"]
+transform = Transform3D(0.6, 0, 0, 0, 3, 0, 0, 0, 10.2, 11, 1.58, -4.4)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/MuroEsteNorte"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/MuroEsteNorte"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="MuroEsteNorte_Tapa" type="MeshInstance3D" parent="Mundo/Laberinto"]
+transform = Transform3D(0.72, 0, 0, 0, 0.12, 0, 0, 0, 10.32, 11, 3.14, -4.4)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="MuroEsteSur" type="StaticBody3D" parent="Mundo/Laberinto"]
+transform = Transform3D(0.6, 0, 0, 0, 3, 0, 0, 0, 5.3, 11, 1.58, 7.35)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/MuroEsteSur"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/MuroEsteSur"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="MuroEsteSur_Tapa" type="MeshInstance3D" parent="Mundo/Laberinto"]
+transform = Transform3D(0.72, 0, 0, 0, 0.12, 0, 0, 0, 5.42, 11, 3.14, 7.35)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="MuroA" type="StaticBody3D" parent="Mundo/Laberinto"]
+transform = Transform3D(13.5, 0, 0, 0, 3, 0, 0, 0, 0.6, -4.25, 1.58, 5.2)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/MuroA"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/MuroA"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="MuroA_Tapa" type="MeshInstance3D" parent="Mundo/Laberinto"]
+transform = Transform3D(13.62, 0, 0, 0, 0.12, 0, 0, 0, 0.72, -4.25, 3.14, 5.2)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="MuroB" type="StaticBody3D" parent="Mundo/Laberinto"]
+transform = Transform3D(13.5, 0, 0, 0, 3, 0, 0, 0, 0.6, 4.25, 1.58, 0.4)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/MuroB"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/MuroB"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="MuroB_Tapa" type="MeshInstance3D" parent="Mundo/Laberinto"]
+transform = Transform3D(13.62, 0, 0, 0, 0.12, 0, 0, 0, 0.72, 4.25, 3.14, 0.4)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="MuroC" type="StaticBody3D" parent="Mundo/Laberinto"]
+transform = Transform3D(12.5, 0, 0, 0, 3, 0, 0, 0, 0.6, -4.75, 1.58, -4.4)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/MuroC"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/MuroC"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="MuroC_Tapa" type="MeshInstance3D" parent="Mundo/Laberinto"]
+transform = Transform3D(12.62, 0, 0, 0, 0.12, 0, 0, 0, 0.72, -4.75, 3.14, -4.4)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="PilonEntradaIzq" type="Node3D" parent="Mundo/Laberinto"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4, 0.08, 10)
+
+[node name="Muro" type="StaticBody3D" parent="Mundo/Laberinto/PilonEntradaIzq"]
+transform = Transform3D(1.2, 0, 0, 0, 4.6, 0, 0, 0, 1.2, 0, 2.3, 0)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/PilonEntradaIzq/Muro"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/PilonEntradaIzq/Muro"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="Tapa" type="MeshInstance3D" parent="Mundo/Laberinto/PilonEntradaIzq"]
+transform = Transform3D(1.5, 0, 0, 0, 0.2, 0, 0, 0, 1.5, 0, 4.7, 0)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Orbe" type="MeshInstance3D" parent="Mundo/Laberinto/PilonEntradaIzq"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 5.15, 0)
+mesh = SubResource("SphereMesh_orbe")
+material_override = SubResource("Mat_dorado")
+
+[node name="Luz" type="OmniLight3D" parent="Mundo/Laberinto/PilonEntradaIzq"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.3, 0)
+light_color = Color(1, 0.72, 0.35, 1)
+light_energy = 2.4
+omni_range = 11.0
+
+[node name="PilonEntradaDer" type="Node3D" parent="Mundo/Laberinto"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 0.08, 10)
+
+[node name="Muro" type="StaticBody3D" parent="Mundo/Laberinto/PilonEntradaDer"]
+transform = Transform3D(1.2, 0, 0, 0, 4.6, 0, 0, 0, 1.2, 0, 2.3, 0)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/PilonEntradaDer/Muro"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/PilonEntradaDer/Muro"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="Tapa" type="MeshInstance3D" parent="Mundo/Laberinto/PilonEntradaDer"]
+transform = Transform3D(1.5, 0, 0, 0, 0.2, 0, 0, 0, 1.5, 0, 4.7, 0)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Orbe" type="MeshInstance3D" parent="Mundo/Laberinto/PilonEntradaDer"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 5.15, 0)
+mesh = SubResource("SphereMesh_orbe")
+material_override = SubResource("Mat_dorado")
+
+[node name="Luz" type="OmniLight3D" parent="Mundo/Laberinto/PilonEntradaDer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.3, 0)
+light_color = Color(1, 0.72, 0.35, 1)
+light_energy = 2.4
+omni_range = 11.0
+
+[node name="PilonSalidaIzq" type="Node3D" parent="Mundo/Laberinto"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4, 0.08, -9.5)
+
+[node name="Muro" type="StaticBody3D" parent="Mundo/Laberinto/PilonSalidaIzq"]
+transform = Transform3D(1.2, 0, 0, 0, 4.6, 0, 0, 0, 1.2, 0, 2.3, 0)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/PilonSalidaIzq/Muro"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/PilonSalidaIzq/Muro"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="Tapa" type="MeshInstance3D" parent="Mundo/Laberinto/PilonSalidaIzq"]
+transform = Transform3D(1.5, 0, 0, 0, 0.2, 0, 0, 0, 1.5, 0, 4.7, 0)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Orbe" type="MeshInstance3D" parent="Mundo/Laberinto/PilonSalidaIzq"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 5.15, 0)
+mesh = SubResource("SphereMesh_orbe")
+material_override = SubResource("Mat_dorado")
+
+[node name="PilonSalidaDer" type="Node3D" parent="Mundo/Laberinto"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 0.08, -9.5)
+
+[node name="Muro" type="StaticBody3D" parent="Mundo/Laberinto/PilonSalidaDer"]
+transform = Transform3D(1.2, 0, 0, 0, 4.6, 0, 0, 0, 1.2, 0, 2.3, 0)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/PilonSalidaDer/Muro"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/PilonSalidaDer/Muro"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="Tapa" type="MeshInstance3D" parent="Mundo/Laberinto/PilonSalidaDer"]
+transform = Transform3D(1.5, 0, 0, 0, 0.2, 0, 0, 0, 1.5, 0, 4.7, 0)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Orbe" type="MeshInstance3D" parent="Mundo/Laberinto/PilonSalidaDer"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 5.15, 0)
+mesh = SubResource("SphereMesh_orbe")
+material_override = SubResource("Mat_dorado")
+
+[node name="CartelLaberinto" type="Label3D" parent="Mundo/Laberinto"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7, 10.4)
+pixel_size = 0.008
+text = "LABERINTO"
+font_size = 72
+outline_size = 16
+modulate = Color(1, 0.86, 0.5, 1)
+outline_modulate = Color(0.13, 0.06, 0.02, 1)
+
+[node name="NichoSecreto" type="Node3D" parent="Mundo/Laberinto"]
+
+[node name="PisoNicho" type="StaticBody3D" parent="Mundo/Laberinto/NichoSecreto"]
+transform = Transform3D(4, 0, 0, 0, 0.08, 0, 0, 0, 4, 13, 0.04, 2.7)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/NichoSecreto/PisoNicho"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/NichoSecreto/PisoNicho"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="MuroNichoEste" type="StaticBody3D" parent="Mundo/Laberinto/NichoSecreto"]
+transform = Transform3D(0.6, 0, 0, 0, 3, 0, 0, 0, 4, 15, 1.58, 2.7)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/NichoSecreto/MuroNichoEste"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/NichoSecreto/MuroNichoEste"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="MuroNichoEste_Tapa" type="MeshInstance3D" parent="Mundo/Laberinto/NichoSecreto"]
+transform = Transform3D(0.72, 0, 0, 0, 0.12, 0, 0, 0, 4.12, 15, 3.14, 2.7)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="MuroNichoNorte" type="StaticBody3D" parent="Mundo/Laberinto/NichoSecreto"]
+transform = Transform3D(4, 0, 0, 0, 3, 0, 0, 0, 0.6, 13, 1.58, 0.7)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/NichoSecreto/MuroNichoNorte"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/NichoSecreto/MuroNichoNorte"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="MuroNichoNorte_Tapa" type="MeshInstance3D" parent="Mundo/Laberinto/NichoSecreto"]
+transform = Transform3D(4.12, 0, 0, 0, 0.12, 0, 0, 0, 0.72, 13, 3.14, 0.7)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="MuroNichoSur" type="StaticBody3D" parent="Mundo/Laberinto/NichoSecreto"]
+transform = Transform3D(4, 0, 0, 0, 3, 0, 0, 0, 0.6, 13, 1.58, 4.7)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/NichoSecreto/MuroNichoSur"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/NichoSecreto/MuroNichoSur"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="MuroNichoSur_Tapa" type="MeshInstance3D" parent="Mundo/Laberinto/NichoSecreto"]
+transform = Transform3D(4.12, 0, 0, 0, 0.12, 0, 0, 0, 0.72, 13, 3.14, 4.7)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="PedestalSecreto" type="StaticBody3D" parent="Mundo/Laberinto/NichoSecreto"]
+transform = Transform3D(1, 0, 0, 0, 0.8, 0, 0, 0, 1, 13.8, 0.48, 2.7)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Laberinto/NichoSecreto/PedestalSecreto"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Laberinto/NichoSecreto/PedestalSecreto"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="OrbeSecreto" type="MeshInstance3D" parent="Mundo/Laberinto/NichoSecreto"]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 13.8, 1.65, 2.7)
+mesh = SubResource("SphereMesh_orbe")
+material_override = SubResource("Mat_dorado")
+
+[node name="LuzSecreto" type="OmniLight3D" parent="Mundo/Laberinto/NichoSecreto"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8, 1.9, 2.7)
+light_color = Color(1, 0.72, 0.35, 1)
+light_energy = 2.0
+omni_range = 6.0
+
+[node name="Explanada" type="Node3D" parent="Mundo"]
+
+[node name="PisoExplanada" type="StaticBody3D" parent="Mundo/Explanada"]
+transform = Transform3D(24, 0, 0, 0, 0.08, 0, 0, 0, 3.5, 0, 0.04, -11.25)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Explanada/PisoExplanada"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Explanada/PisoExplanada"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="FarolEscalinataIzq" type="Node3D" parent="Mundo/Explanada"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6, 0.08, -12.4)
+
+[node name="Base" type="MeshInstance3D" parent="Mundo/Explanada/FarolEscalinataIzq"]
+transform = Transform3D(1, 0, 0, 0, 0.4, 0, 0, 0, 1, 0, 0.2, 0)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Poste" type="MeshInstance3D" parent="Mundo/Explanada/FarolEscalinataIzq"]
+transform = Transform3D(0.2, 0, 0, 0, 3.4, 0, 0, 0, 0.2, 0, 2.17, 0)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_madera")
+
+[node name="Esfera" type="MeshInstance3D" parent="Mundo/Explanada/FarolEscalinataIzq"]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 4.1, 0)
+mesh = SubResource("SphereMesh_orbe")
+material_override = SubResource("Mat_dorado")
+
+[node name="Luz" type="OmniLight3D" parent="Mundo/Explanada/FarolEscalinataIzq"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.15, 0)
+light_color = Color(1, 0.72, 0.35, 1)
+light_energy = 2.2
+omni_range = 9.0
+
+[node name="FarolEscalinataDer" type="Node3D" parent="Mundo/Explanada"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6, 0.08, -12.4)
+
+[node name="Base" type="MeshInstance3D" parent="Mundo/Explanada/FarolEscalinataDer"]
+transform = Transform3D(1, 0, 0, 0, 0.4, 0, 0, 0, 1, 0, 0.2, 0)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Poste" type="MeshInstance3D" parent="Mundo/Explanada/FarolEscalinataDer"]
+transform = Transform3D(0.2, 0, 0, 0, 3.4, 0, 0, 0, 0.2, 0, 2.17, 0)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_madera")
+
+[node name="Esfera" type="MeshInstance3D" parent="Mundo/Explanada/FarolEscalinataDer"]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 4.1, 0)
+mesh = SubResource("SphereMesh_orbe")
+material_override = SubResource("Mat_dorado")
+
+[node name="Luz" type="OmniLight3D" parent="Mundo/Explanada/FarolEscalinataDer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.15, 0)
+light_color = Color(1, 0.72, 0.35, 1)
+light_energy = 2.2
+omni_range = 9.0
+
+[node name="Escalinata" type="Node3D" parent="Mundo"]
+
+[node name="Escalon1" type="StaticBody3D" parent="Mundo/Escalinata"]
+transform = Transform3D(8, 0, 0, 0, 0.16, 0, 0, 0, 0.45, 0, 0.08, -13.225)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Escalinata/Escalon1"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_escalera")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Escalinata/Escalon1"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="Escalon2" type="StaticBody3D" parent="Mundo/Escalinata"]
+transform = Transform3D(8, 0, 0, 0, 0.32, 0, 0, 0, 0.45, 0, 0.16, -13.675)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Escalinata/Escalon2"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_escalera")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Escalinata/Escalon2"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="Escalon3" type="StaticBody3D" parent="Mundo/Escalinata"]
+transform = Transform3D(8, 0, 0, 0, 0.48, 0, 0, 0, 0.45, 0, 0.24, -14.125)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Escalinata/Escalon3"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_escalera")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Escalinata/Escalon3"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="Escalon4" type="StaticBody3D" parent="Mundo/Escalinata"]
+transform = Transform3D(8, 0, 0, 0, 0.64, 0, 0, 0, 0.45, 0, 0.32, -14.575)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Escalinata/Escalon4"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_escalera")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Escalinata/Escalon4"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="Escalon5" type="StaticBody3D" parent="Mundo/Escalinata"]
+transform = Transform3D(8, 0, 0, 0, 0.8, 0, 0, 0, 0.45, 0, 0.4, -15.025)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Escalinata/Escalon5"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_escalera")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Escalinata/Escalon5"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="Escalon6" type="StaticBody3D" parent="Mundo/Escalinata"]
+transform = Transform3D(8, 0, 0, 0, 0.96, 0, 0, 0, 0.45, 0, 0.48, -15.475)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Escalinata/Escalon6"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_escalera")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Escalinata/Escalon6"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="Escalon7" type="StaticBody3D" parent="Mundo/Escalinata"]
+transform = Transform3D(8, 0, 0, 0, 1.12, 0, 0, 0, 0.45, 0, 0.56, -15.925)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Escalinata/Escalon7"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_escalera")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Escalinata/Escalon7"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="Escalon8" type="StaticBody3D" parent="Mundo/Escalinata"]
+transform = Transform3D(8, 0, 0, 0, 1.28, 0, 0, 0, 0.45, 0, 0.64, -16.375)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Escalinata/Escalon8"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_escalera")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Escalinata/Escalon8"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="Escalon9" type="StaticBody3D" parent="Mundo/Escalinata"]
+transform = Transform3D(8, 0, 0, 0, 1.44, 0, 0, 0, 0.45, 0, 0.72, -16.825)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Escalinata/Escalon9"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_escalera")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Escalinata/Escalon9"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="Escalon10" type="StaticBody3D" parent="Mundo/Escalinata"]
+transform = Transform3D(8, 0, 0, 0, 1.6, 0, 0, 0, 0.45, 0, 0.8, -17.275)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Escalinata/Escalon10"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_escalera")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Escalinata/Escalon10"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="Templo" type="Node3D" parent="Mundo"]
+
+[node name="PlataformaTemplo" type="StaticBody3D" parent="Mundo/Templo"]
+transform = Transform3D(22, 0, 0, 0, 1.6, 0, 0, 0, 10.5, 0, 0.8, -22.75)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Templo/PlataformaTemplo"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Templo/PlataformaTemplo"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="ParapetoTemploIzq" type="StaticBody3D" parent="Mundo/Templo"]
+transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 10.5, -10.7, 2.1, -22.75)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Templo/ParapetoTemploIzq"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Templo/ParapetoTemploIzq"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="ParapetoTemploDer" type="StaticBody3D" parent="Mundo/Templo"]
+transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 10.5, 10.7, 2.1, -22.75)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Templo/ParapetoTemploDer"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Templo/ParapetoTemploDer"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="ParapetoTemploFondo" type="StaticBody3D" parent="Mundo/Templo"]
+transform = Transform3D(22, 0, 0, 0, 1, 0, 0, 0, 0.6, 0, 2.1, -27.7)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Templo/ParapetoTemploFondo"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Templo/ParapetoTemploFondo"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="PedestalTorre" type="StaticBody3D" parent="Mundo/Templo"]
+transform = Transform3D(3.6, 0, 0, 0, 1.2, 0, 0, 0, 3.6, 0, 2.2, -22.5)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Templo/PedestalTorre"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Templo/PedestalTorre"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="ColumnaTorre" type="StaticBody3D" parent="Mundo/Templo"]
+transform = Transform3D(1.2, 0, 0, 0, 3.6, 0, 0, 0, 1.2, 0, 4.6, -22.5)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Templo/ColumnaTorre"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Templo/ColumnaTorre"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="OrbeTorre" type="MeshInstance3D" parent="Mundo/Templo"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 6.9, -22.5)
+mesh = SubResource("SphereMesh_orbe")
+material_override = SubResource("Mat_dorado")
+
+[node name="LuzOrbe" type="OmniLight3D" parent="Mundo/Templo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.9, -22.5)
+light_color = Color(1, 0.75, 0.35, 1)
+light_energy = 2.5
+omni_range = 14.0
+
+[node name="ColumnaTemploIzq" type="StaticBody3D" parent="Mundo/Templo"]
+transform = Transform3D(1.2, 0, 0, 0, 3.4, 0, 0, 0, 1.2, -8.8, 3.3, -26.6)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Templo/ColumnaTemploIzq"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Templo/ColumnaTemploIzq"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="ColumnaTemploIzq_Tapa" type="MeshInstance3D" parent="Mundo/Templo"]
+transform = Transform3D(1.6, 0, 0, 0, 0.25, 0, 0, 0, 1.6, -8.8, 5.12, -26.6)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="ColumnaTemploDer" type="StaticBody3D" parent="Mundo/Templo"]
+transform = Transform3D(1.2, 0, 0, 0, 3.4, 0, 0, 0, 1.2, 8.8, 3.3, -26.6)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Templo/ColumnaTemploDer"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Templo/ColumnaTemploDer"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="ColumnaTemploDer_Tapa" type="MeshInstance3D" parent="Mundo/Templo"]
+transform = Transform3D(1.6, 0, 0, 0, 0.25, 0, 0, 0, 1.6, 8.8, 5.12, -26.6)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="ArbolTemploIzq" type="StaticBody3D" parent="Mundo/Templo"]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, -7.8, 1.6, -24.6)
+
+[node name="Tronco" type="MeshInstance3D" parent="Mundo/Templo/ArbolTemploIzq"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+mesh = SubResource("CylinderMesh_tronco")
+material_override = SubResource("Mat_madera")
+
+[node name="Copa" type="MeshInstance3D" parent="Mundo/Templo/ArbolTemploIzq"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("SphereMesh_copa")
+material_override = SubResource("Mat_hoja")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Templo/ArbolTemploIzq"]
+transform = Transform3D(0.6, 0, 0, 0, 2.4, 0, 0, 0, 0.6, 0, 1.2, 0)
+shape = SubResource("BoxShape_cubo")
+
+[node name="ArbolTemploDer" type="StaticBody3D" parent="Mundo/Templo"]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 7.8, 1.6, -24.6)
+
+[node name="Tronco" type="MeshInstance3D" parent="Mundo/Templo/ArbolTemploDer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+mesh = SubResource("CylinderMesh_tronco")
+material_override = SubResource("Mat_madera")
+
+[node name="Copa" type="MeshInstance3D" parent="Mundo/Templo/ArbolTemploDer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("SphereMesh_copa")
+material_override = SubResource("Mat_hoja")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Templo/ArbolTemploDer"]
+transform = Transform3D(0.6, 0, 0, 0, 2.4, 0, 0, 0, 0.6, 0, 1.2, 0)
+shape = SubResource("BoxShape_cubo")
+
+[node name="JardinOeste" type="Node3D" parent="Mundo"]
+
+[node name="PisoJardinOeste" type="StaticBody3D" parent="Mundo/JardinOeste"]
+transform = Transform3D(3, 0, 0, 0, 0.08, 0, 0, 0, 8.5, -19, 0.04, -7.25)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/JardinOeste/PisoJardinOeste"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/JardinOeste/PisoJardinOeste"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="PisoJardinOesteAcceso" type="StaticBody3D" parent="Mundo/JardinOeste"]
+transform = Transform3D(6, 0, 0, 0, 0.08, 0, 0, 0, 3, -15, 0.04, -11.25)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/JardinOeste/PisoJardinOesteAcceso"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/JardinOeste/PisoJardinOesteAcceso"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="ArbolOeste1" type="StaticBody3D" parent="Mundo/JardinOeste"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -5.5)
+
+[node name="Tronco" type="MeshInstance3D" parent="Mundo/JardinOeste/ArbolOeste1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+mesh = SubResource("CylinderMesh_tronco")
+material_override = SubResource("Mat_madera")
+
+[node name="Copa" type="MeshInstance3D" parent="Mundo/JardinOeste/ArbolOeste1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("SphereMesh_copa")
+material_override = SubResource("Mat_hoja")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/JardinOeste/ArbolOeste1"]
+transform = Transform3D(0.6, 0, 0, 0, 2.4, 0, 0, 0, 0.6, 0, 1.2, 0)
+shape = SubResource("BoxShape_cubo")
+
+[node name="ArbolOeste2" type="StaticBody3D" parent="Mundo/JardinOeste"]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, -25.5, 0, -1)
+
+[node name="Tronco" type="MeshInstance3D" parent="Mundo/JardinOeste/ArbolOeste2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+mesh = SubResource("CylinderMesh_tronco")
+material_override = SubResource("Mat_madera")
+
+[node name="Copa" type="MeshInstance3D" parent="Mundo/JardinOeste/ArbolOeste2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("SphereMesh_copa")
+material_override = SubResource("Mat_hoja")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/JardinOeste/ArbolOeste2"]
+transform = Transform3D(0.6, 0, 0, 0, 2.4, 0, 0, 0, 0.6, 0, 1.2, 0)
+shape = SubResource("BoxShape_cubo")
+
+[node name="ArbolOeste3" type="StaticBody3D" parent="Mundo/JardinOeste"]
+transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, -18, 0, 1.5)
+
+[node name="Tronco" type="MeshInstance3D" parent="Mundo/JardinOeste/ArbolOeste3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+mesh = SubResource("CylinderMesh_tronco")
+material_override = SubResource("Mat_madera")
+
+[node name="Copa" type="MeshInstance3D" parent="Mundo/JardinOeste/ArbolOeste3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("SphereMesh_copa")
+material_override = SubResource("Mat_hoja")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/JardinOeste/ArbolOeste3"]
+transform = Transform3D(0.6, 0, 0, 0, 2.4, 0, 0, 0, 0.6, 0, 1.2, 0)
+shape = SubResource("BoxShape_cubo")
+
+[node name="ArbolOeste4" type="StaticBody3D" parent="Mundo/JardinOeste"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -23.5, 0, 4.5)
+
+[node name="Tronco" type="MeshInstance3D" parent="Mundo/JardinOeste/ArbolOeste4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+mesh = SubResource("CylinderMesh_tronco")
+material_override = SubResource("Mat_madera")
+
+[node name="Copa" type="MeshInstance3D" parent="Mundo/JardinOeste/ArbolOeste4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("SphereMesh_copa")
+material_override = SubResource("Mat_hoja")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/JardinOeste/ArbolOeste4"]
+transform = Transform3D(0.6, 0, 0, 0, 2.4, 0, 0, 0, 0.6, 0, 1.2, 0)
+shape = SubResource("BoxShape_cubo")
+
+[node name="RuinaOesteA" type="StaticBody3D" parent="Mundo/JardinOeste"]
+transform = Transform3D(7, 0, 0, 0, 1.8, 0, 0, 0, 0.6, -24, 0.9, -8.5)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/JardinOeste/RuinaOesteA"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/JardinOeste/RuinaOesteA"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="RuinaOesteB" type="StaticBody3D" parent="Mundo/JardinOeste"]
+transform = Transform3D(0.6, 0, 0, 0, 1.8, 0, 0, 0, 5, -16.8, 0.9, -5.5)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/JardinOeste/RuinaOesteB"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/JardinOeste/RuinaOesteB"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="FarolOeste" type="Node3D" parent="Mundo/JardinOeste"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, 0.08, -10.4)
+
+[node name="Base" type="MeshInstance3D" parent="Mundo/JardinOeste/FarolOeste"]
+transform = Transform3D(1, 0, 0, 0, 0.4, 0, 0, 0, 1, 0, 0.2, 0)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Poste" type="MeshInstance3D" parent="Mundo/JardinOeste/FarolOeste"]
+transform = Transform3D(0.2, 0, 0, 0, 3.4, 0, 0, 0, 0.2, 0, 2.17, 0)
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_madera")
+
+[node name="Esfera" type="MeshInstance3D" parent="Mundo/JardinOeste/FarolOeste"]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 4.1, 0)
+mesh = SubResource("SphereMesh_orbe")
+material_override = SubResource("Mat_dorado")
+
+[node name="Luz" type="OmniLight3D" parent="Mundo/JardinOeste/FarolOeste"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.15, 0)
+light_color = Color(1, 0.72, 0.35, 1)
+light_energy = 2.0
+omni_range = 9.0
+
+[node name="JardinEste" type="Node3D" parent="Mundo"]
+
+[node name="PisoJardinEste" type="StaticBody3D" parent="Mundo/JardinEste"]
+transform = Transform3D(3, 0, 0, 0, 0.08, 0, 0, 0, 8.5, 19, 0.04, -7.25)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/JardinEste/PisoJardinEste"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/JardinEste/PisoJardinEste"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="PisoJardinEsteAcceso" type="StaticBody3D" parent="Mundo/JardinEste"]
+transform = Transform3D(6, 0, 0, 0, 0.08, 0, 0, 0, 3, 15, 0.04, -11.25)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/JardinEste/PisoJardinEsteAcceso"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_ladrillo")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/JardinEste/PisoJardinEsteAcceso"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="ArbolEste1" type="StaticBody3D" parent="Mundo/JardinEste"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -5.5)
+
+[node name="Tronco" type="MeshInstance3D" parent="Mundo/JardinEste/ArbolEste1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+mesh = SubResource("CylinderMesh_tronco")
+material_override = SubResource("Mat_madera")
+
+[node name="Copa" type="MeshInstance3D" parent="Mundo/JardinEste/ArbolEste1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("SphereMesh_copa")
+material_override = SubResource("Mat_hoja")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/JardinEste/ArbolEste1"]
+transform = Transform3D(0.6, 0, 0, 0, 2.4, 0, 0, 0, 0.6, 0, 1.2, 0)
+shape = SubResource("BoxShape_cubo")
+
+[node name="ArbolEste2" type="StaticBody3D" parent="Mundo/JardinEste"]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 25.5, 0, -1)
+
+[node name="Tronco" type="MeshInstance3D" parent="Mundo/JardinEste/ArbolEste2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+mesh = SubResource("CylinderMesh_tronco")
+material_override = SubResource("Mat_madera")
+
+[node name="Copa" type="MeshInstance3D" parent="Mundo/JardinEste/ArbolEste2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("SphereMesh_copa")
+material_override = SubResource("Mat_hoja")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/JardinEste/ArbolEste2"]
+transform = Transform3D(0.6, 0, 0, 0, 2.4, 0, 0, 0, 0.6, 0, 1.2, 0)
+shape = SubResource("BoxShape_cubo")
+
+[node name="ArbolEste3" type="StaticBody3D" parent="Mundo/JardinEste"]
+transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 18.5, 0, 1.5)
+
+[node name="Tronco" type="MeshInstance3D" parent="Mundo/JardinEste/ArbolEste3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+mesh = SubResource("CylinderMesh_tronco")
+material_override = SubResource("Mat_madera")
+
+[node name="Copa" type="MeshInstance3D" parent="Mundo/JardinEste/ArbolEste3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("SphereMesh_copa")
+material_override = SubResource("Mat_hoja")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/JardinEste/ArbolEste3"]
+transform = Transform3D(0.6, 0, 0, 0, 2.4, 0, 0, 0, 0.6, 0, 1.2, 0)
+shape = SubResource("BoxShape_cubo")
+
+[node name="ArbolEste4" type="StaticBody3D" parent="Mundo/JardinEste"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 24, 0, 4.5)
+
+[node name="Tronco" type="MeshInstance3D" parent="Mundo/JardinEste/ArbolEste4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+mesh = SubResource("CylinderMesh_tronco")
+material_override = SubResource("Mat_madera")
+
+[node name="Copa" type="MeshInstance3D" parent="Mundo/JardinEste/ArbolEste4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("SphereMesh_copa")
+material_override = SubResource("Mat_hoja")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/JardinEste/ArbolEste4"]
+transform = Transform3D(0.6, 0, 0, 0, 2.4, 0, 0, 0, 0.6, 0, 1.2, 0)
+shape = SubResource("BoxShape_cubo")
+
+[node name="RuinaEsteA" type="StaticBody3D" parent="Mundo/JardinEste"]
+transform = Transform3D(7, 0, 0, 0, 1.8, 0, 0, 0, 0.6, 24, 0.9, -8.5)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/JardinEste/RuinaEsteA"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/JardinEste/RuinaEsteA"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="RuinaEsteB" type="StaticBody3D" parent="Mundo/JardinEste"]
+transform = Transform3D(0.6, 0, 0, 0, 1.8, 0, 0, 0, 5, 16.8, 0.9, -5.5)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/JardinEste/RuinaEsteB"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/JardinEste/RuinaEsteB"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="Limites" type="Node3D" parent="Mundo"]
+
+[node name="PretilNorte" type="StaticBody3D" parent="Mundo/Limites"]
+transform = Transform3D(60, 0, 0, 0, 0.9, 0, 0, 0, 0.6, 0, 0.45, -33.7)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Limites/PretilNorte"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Limites/PretilNorte"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="PretilSur" type="StaticBody3D" parent="Mundo/Limites"]
+transform = Transform3D(60, 0, 0, 0, 0.9, 0, 0, 0, 0.6, 0, 0.45, 33.7)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Limites/PretilSur"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Limites/PretilSur"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="PretilEste" type="StaticBody3D" parent="Mundo/Limites"]
+transform = Transform3D(0.6, 0, 0, 0, 0.9, 0, 0, 0, 64, 29.7, 0.45, 0)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Limites/PretilEste"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Limites/PretilEste"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="PretilOeste" type="StaticBody3D" parent="Mundo/Limites"]
+transform = Transform3D(0.6, 0, 0, 0, 0.9, 0, 0, 0, 64, -29.7, 0.45, 0)
+
+[node name="Malla" type="MeshInstance3D" parent="Mundo/Limites/PretilOeste"]
+mesh = SubResource("BoxMesh_cubo")
+material_override = SubResource("Mat_piedra")
+
+[node name="Colision" type="CollisionShape3D" parent="Mundo/Limites/PretilOeste"]
+shape = SubResource("BoxShape_cubo")
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="." unique_id=1852493044]
+self_modulate = Color(0.98978823, 0.98978823, 0.9897881, 1)
+anchors_preset = -1
+anchor_left = 0.139
+anchor_top = 0.758
+anchor_right = 0.139
+anchor_bottom = 0.758
+offset_left = -200.12802
+offset_top = -195.18402
+offset_right = 199.87198
+offset_bottom = 194.81598
+joystick_mode = 1
+joystick_size = 235.0
+tip_size = 95.0
+deadzone_ratio = 0.15
+clampzone_ratio = 0.93
+action_left = &"move_left"
+action_right = &"move_right"
+action_up = &"move_forward"
+action_down = &"move_back"
+script = ExtResource("5_joystick")
+
+[node name="MobileControls" type="Control" parent="." unique_id=1978531939]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_mobile")
+
+[node name="JumpButton" type="Button" parent="MobileControls" unique_id=1514296049]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.067
+anchor_top = 0.947
+anchor_right = 1.067
+anchor_bottom = 0.947
+offset_left = -326.18414
+offset_top = -403.656
+offset_right = 67.81592
+offset_bottom = -12.656006
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.52, 0.52)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.6901961)
+theme_override_font_sizes/font_size = 26
+icon = ExtResource("10_salto")
+flat = true
+
+[node name="SprintButton" type="Button" parent="MobileControls" unique_id=2007209663]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.105
+anchor_top = 0.5
+anchor_right = 1.105
+anchor_bottom = 0.5
+offset_left = -586.95996
+offset_top = 101.0
+offset_right = -171.95996
+offset_bottom = 512.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0.5)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.6901961)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0.4)
+theme_override_font_sizes/font_size = 26
+icon = ExtResource("11_correr")
+flat = true
+
+[node name="Interfaz" type="Control" parent="." unique_id=1407798420]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BotonMenu" type="Button" parent="Interfaz" unique_id=898764605]
+custom_minimum_size = Vector2(140, 44)
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 160.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 20
+text = "◂ MENÚ"
+
+[node name="Objetivo" type="Label" parent="Interfaz"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_top = 92.0
+offset_right = 320.0
+offset_bottom = 136.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.921569, 0.752941, 1)
+theme_override_colors/font_outline_color = Color(0.109804, 0.0588235, 0.0156863, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 26
+text = "Llega al orbe del templo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AvisoSecreto" type="Label" parent="Interfaz"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -280.0
+offset_top = 146.0
+offset_right = 280.0
+offset_bottom = 190.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.85098, 0.447059, 1)
+theme_override_colors/font_outline_color = Color(0.109804, 0.0588235, 0.0156863, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 28
+text = "SECRETO ENCONTRADO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Version" type="Label" parent="Interfaz" unique_id=1591932732]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -44.0
+offset_right = 320.0
+offset_bottom = -14.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.6)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+text = "versión.V(0,36)"
+
+[node name="Mensaje" type="Control" parent="Interfaz" unique_id=1936384471]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FondoMensaje" type="ColorRect" parent="Interfaz/Mensaje" unique_id=201745828]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.45)
+
+[node name="Titulo" type="Label" parent="Interfaz/Mensaje" unique_id=536416423]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -96.0
+offset_right = 420.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.8509804, 0.44705883, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_colors/font_outline_color = Color(0.10980392, 0.05882353, 0.015686275, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 60
+text = "¡META ALCANZADA!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitulo" type="Label" parent="Interfaz/Mensaje" unique_id=1449822037]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = 16.0
+offset_right = 420.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.9490196, 0.84705883, 0.95)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.85)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 26
+text = "Llegaste a la torre de Body Shan"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Meta" type="Area3D" parent="." unique_id=1540397584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -20.6)
+
+[node name="ColisionMeta" type="CollisionShape3D" parent="Meta" unique_id=232416374]
+transform = Transform3D(7, 0, 0, 0, 4, 0, 0, 0, 2.5, 0, 2, 0)
+shape = SubResource("BoxShape_cubo")
+
+[node name="Secreto" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1.2, 2.7)
+
+[node name="ColisionSecreto" type="CollisionShape3D" parent="Secreto"]
+transform = Transform3D(3, 0, 0, 0, 2.5, 0, 0, 0, 3.5, 0, 0, 0)
+shape = SubResource("BoxShape_cubo")
+
+[node name="Sol" type="DirectionalLight3D" parent="." unique_id=1596559378]
+transform = Transform3D(0.81915, 0, 0.57358, 0.43938, 0.64279, -0.62751, -0.36871, 0.76604, 0.52661, 0, 20, 0)
+light_color = Color(1, 0.8, 0.55, 1)
+light_energy = 1.6
+shadow_enabled = true
+directional_shadow_max_distance = 60.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1955302991]
+environment = SubResource("Entorno")

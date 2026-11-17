@@ -1,0 +1,341 @@
+[gd_scene format=3 uid="uid://cawqy06asawru"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2nwa"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gyc6d"]
+material = SubResource("StandardMaterial3D_t2nwa")
+size = Vector3(0.3059082, 0.449749, 0.32531738)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hqkgv"]
+size = Vector3(0.30895996, 0.53759766, 0.27601624)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_g7b7a"]
+radius = 0.28793335
+height = 0.5758667
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j82wg"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ki416"]
+material = SubResource("StandardMaterial3D_j82wg")
+size = Vector3(0.09326172, 0.18231201, 0.020904541)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wao0y"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j82wg"]
+material = SubResource("StandardMaterial3D_wao0y")
+size = Vector3(0.5380249, 0.06225586, 0.61499023)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpo87"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gyc6d"]
+material = SubResource("StandardMaterial3D_bpo87")
+radius = 0.28515625
+height = 0.5703125
+
+[sub_resource type="Animation" id="Animation_t2nwa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pierna izquierda:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.13131595, 0.19511276, 0.15911967)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pierna izquierda:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.3577925, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("piernas derecha:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.281, 0.389, 0.046)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("piernas derecha:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.24783675, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("pecho/brazo derecho1_2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.02617994, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("pecho/brazo izquierdo1_2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.2617994, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("cara:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.2443461, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hr6g3"]
+resource_name = "caminar "
+length = 0.76666665
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pierna izquierda:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.2, 0.31, 0.45, 0.47, 0.56),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.11, 0.325, 0.147), Vector3(0.075, 0.57, -0.135), Vector3(0.07, 0.57, -0.305), Vector3(0.045, 0.295, -0.11), Vector3(0.075, 0.295, 0.21), Vector3(0.11, 0.295, 0.269), Vector3(0.08, 0.295, 0.535)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pierna izquierda:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.2, 0.31, 0.45, 0.56),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.3577925, 0, 0), Vector3(0.51487213, 0, 0), Vector3(0, 0, 0), Vector3(-0.18325958, 0, 0), Vector3(-0.53232545, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("piernas derecha:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.21, 0.33333334, 0.43333334, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.281, 0.299, 0.166), Vector3(-0.281, 0.326, 0.13), Vector3(-0.281, 0.3557, 0.0904), Vector3(-0.281, 0.389, 0.046), Vector3(-0.281, 0.486, -0.314), Vector3(-0.281, 0.441, -0.389), Vector3(-0.281, 0.291, -0.214)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("piernas derecha:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.21, 0.33333334, 0.43333334, 0.6, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.07435103, 0, 0), Vector3(0.15613714, 0, 0), Vector3(0.24783675, 0, 0), Vector3(0.4660029, 0, 0), Vector3(0.34906584, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("pecho/brazo derecho1_2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.18, 0.33, 0.46, 0.62, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.02617994, 0, 0), Vector3(-0.26529005, 0, 0), Vector3(-0.41364303, 0, 0), Vector3(0.075049154, 0, 0), Vector3(0.38048178, 0, 0), Vector3(-0.012217305, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("pecho/brazo izquierdo1_2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.18, 0.33, 0.46, 0.62, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.2617994, 0, 0), Vector3(0.44505897, 0, 0), Vector3(0.72431165, 0, 0), Vector3(-0.33161256, 0, 0), Vector3(-0.3351032, 0, 0), Vector3(-0.12217305, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("cara:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.09, 0.16, 0.37, 0.43, 0.59, 0.63, 0.76666665),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.20943952, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.2268928, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v4ohi"]
+_data = {
+&"RESET": SubResource("Animation_t2nwa"),
+&"caminar ": SubResource("Animation_hr6g3")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_g7b7a"]
+size = Vector3(0.7261963, 1, 0.2782898)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqkgv"]
+albedo_color = Color(0.2067998, 0.20679978, 0.20679978, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6qx4q"]
+material = SubResource("StandardMaterial3D_hqkgv")
+size = Vector3(0.7347717, 0.77575684, 0.3416748)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4ohi"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bpo87"]
+material = SubResource("StandardMaterial3D_v4ohi")
+size = Vector3(0.6209717, 0.3330078, 0.5071564)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jm7pk"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wao0y"]
+material = SubResource("StandardMaterial3D_jm7pk")
+size = Vector3(0.5241699, 0.18005371, 0.42163086)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vqlf"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jm7pk"]
+material = SubResource("StandardMaterial3D_3vqlf")
+size = Vector3(0.7540283, 0.18328857, 0.30297852)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xrv66"]
+size = Vector3(0.29296875, 0.50146484, 0.3092041)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hr6g3"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3vqlf"]
+material = SubResource("StandardMaterial3D_hr6g3")
+size = Vector3(0.29504395, 0.44735718, 0.29992676)
+
+[node name="Node3D" type="Node3D" unique_id=140242520]
+
+[node name="pierna izquierda" type="MeshInstance3D" parent="." unique_id=1129175432]
+transform = Transform3D(1, 0, 0, 0, 0.9366722, -0.3502074, 0, 0.3502074, 0.9366722, 0.13131595, 0.19511276, 0.15911967)
+mesh = SubResource("BoxMesh_gyc6d")
+
+[node name="media pierna izquierda" type="MeshInstance3D" parent="pierna izquierda" unique_id=1331100933]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021304488, 0.49617875, -0.0028883219)
+mesh = SubResource("BoxMesh_hqkgv")
+
+[node name="cara" type="MeshInstance3D" parent="." unique_id=234368612]
+transform = Transform3D(1, 0, 0, 0, 0.9702957, 0.2419219, 0, -0.2419219, 0.9702957, -0.05901152, 2.2022865, 0.17504883)
+mesh = SubResource("CapsuleMesh_g7b7a")
+
+[node name="ojo izquierdo" type="MeshInstance3D" parent="cara" unique_id=1208611258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14037955, -0.0010819435, -0.24591702)
+mesh = SubResource("BoxMesh_ki416")
+
+[node name="ojo derecho" type="MeshInstance3D" parent="cara/ojo izquierdo" unique_id=2842972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27519637, 0, 0)
+mesh = SubResource("BoxMesh_ki416")
+
+[node name="gorra1_2" type="MeshInstance3D" parent="cara" unique_id=1055572626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0026552677, 0.14196777, -0.080444515)
+mesh = SubResource("BoxMesh_j82wg")
+
+[node name="gorra2_2" type="MeshInstance3D" parent="cara/gorra1_2" unique_id=1001510600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.046457767, 0.09049559)
+mesh = SubResource("CapsuleMesh_gyc6d")
+
+[node name="piernas derecha" type="MeshInstance3D" parent="." unique_id=868710025]
+transform = Transform3D(1, 0, 0, 0, 0.96944535, -0.24530739, 0, 0.24530739, 0.96944535, -0.281, 0.389, 0.046)
+mesh = SubResource("BoxMesh_gyc6d")
+
+[node name="media pierna derecha" type="MeshInstance3D" parent="piernas derecha" unique_id=910906085]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002614081, 0.4989444, -0.02006185)
+mesh = SubResource("BoxMesh_hqkgv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1238367518]
+libraries/ = SubResource("AnimationLibrary_v4ohi")
+
+[node name="pecho" type="MeshInstance3D" parent="." unique_id=1054286602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.077243686, 1.4575686, 0.15779114)
+mesh = SubResource("BoxMesh_g7b7a")
+
+[node name="chaleco" type="MeshInstance3D" parent="pecho" unique_id=1171083306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0034418702, 0.008305073, 0.012407005)
+mesh = SubResource("BoxMesh_6qx4q")
+
+[node name="bolsillo1_2" type="MeshInstance3D" parent="pecho/chaleco" unique_id=349204351]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003003478, -0.19873238, 0.008918762)
+mesh = SubResource("BoxMesh_bpo87")
+
+[node name="bolsillo2_2" type="MeshInstance3D" parent="pecho/chaleco" unique_id=1126834447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0059814453, 0.06017351, -0.00061035156)
+mesh = SubResource("BoxMesh_wao0y")
+
+[node name="agarradera derecha" type="MeshInstance3D" parent="pecho/chaleco" unique_id=2016469204]
+transform = Transform3D(0.006428273, -0.9999793, 0, 0.9999793, 0.006428273, 0, 0, 0, 1, 0.27357635, 0.12001598, -0.00036621094)
+mesh = SubResource("BoxMesh_jm7pk")
+
+[node name="agarradera izquierda" type="MeshInstance3D" parent="pecho/chaleco" unique_id=1592312532]
+transform = Transform3D(0.006428273, -0.9999793, 0, 0.9999793, 0.006428273, 0, 0, 0, 1, -0.27090764, 0.11658049, -0.01574707)
+mesh = SubResource("BoxMesh_jm7pk")
+
+[node name="brazo derecho1_2" type="MeshInstance3D" parent="pecho" unique_id=1527502879]
+transform = Transform3D(1, 0, 0, 0, 0.99965733, 0.02617695, 0, -0.02617695, 0.99965733, 0.51043314, 0.22094727, 0.019422472)
+mesh = SubResource("BoxMesh_xrv66")
+
+[node name="brazo derecho2_2" type="MeshInstance3D" parent="pecho/brazo derecho1_2" unique_id=112992245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0021362305, -0.4770236, -0.0015258789)
+mesh = SubResource("BoxMesh_3vqlf")
+
+[node name="brazo izquierdo1_2" type="MeshInstance3D" parent="pecho" unique_id=122001601]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, -0.517814, 0.2206899, 0.019422472)
+mesh = SubResource("BoxMesh_xrv66")
+
+[node name="brazo izquierdo 2_2" type="MeshInstance3D" parent="pecho/brazo izquierdo1_2" unique_id=818917980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0010652542, -0.47676623, -0.0015258789)
+mesh = SubResource("BoxMesh_3vqlf")

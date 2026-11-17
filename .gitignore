@@ -1,0 +1,18 @@
+# Godot generated files
+.godot/
+/android/
+*.translation
+
+# Export artifacts
+/build/
+/export/
+*.apk
+*.aab
+*.pck
+*.zip
+*.keystore
+*.jks
+
+# OS
+.DS_Store
+Thumbs.db
