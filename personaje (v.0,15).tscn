@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cawqy06asawru"]
 
-[ext_resource type="Texture2D" uid="uid://caf77xmyy5q6b" path="res://textura de sapato.jpg" id="1_hr6g3"]
+[ext_resource type="Texture2D" uid="uid://cvhb2tj588ug8" path="res://textura de sapato.jpg" id="1_hr6g3"]
 [ext_resource type="Texture2D" uid="uid://cjoay5ajcu7pq" path="res://ropa a Rugada.jpg" id="2_v4ohi"]
 
 [sub_resource type="Animation" id="Animation_t2nwa"]

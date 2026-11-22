@@ -33,9 +33,9 @@ extends Node3D
 @onready var _mensaje: Control = $Interfaz/Mensaje
 @onready var _meta: Area3D = $Meta
 @onready var _boton_menu: Button = $Interfaz/BotonMenu
-@onready var _objetivo: Label = $Interfaz/Objetivo
-@onready var _aviso_secreto: Label = $Interfaz/AvisoSecreto
-@onready var _secreto: Area3D = $Secreto
+@onready var _objetivo: Label = get_node_or_null("Interfaz/Objetivo") as Label
+@onready var _aviso_secreto: Label = get_node_or_null("Interfaz/AvisoSecreto") as Label
+@onready var _secreto: Area3D = get_node_or_null("Secreto") as Area3D
 
 
 # -----------------------------------------------------------------------------
@@ -63,16 +63,19 @@ func _ready() -> void:
 
 	# Area3D emite body_entered cuando un cuerpo físico entra en su volumen.
 	_meta.body_entered.connect(_on_meta_body_entered)
-	_secreto.body_entered.connect(_on_secreto_body_entered)
+	# El secreto es opcional: algunas versiones del escenario no lo incluyen.
+	if _secreto != null:
+		_secreto.body_entered.connect(_on_secreto_body_entered)
 
 	# Botón para volver al menú de inicio.
 	_boton_menu.pressed.connect(_volver_al_menu)
 
 	# El objetivo se muestra unos segundos y luego se desvanece solo.
-	_objetivo.modulate.a = 1.0
-	var tween_objetivo := create_tween()
-	tween_objetivo.tween_interval(5.0)
-	tween_objetivo.tween_property(_objetivo, "modulate:a", 0.0, 1.0)
+	if _objetivo != null:
+		_objetivo.modulate.a = 1.0
+		var tween_objetivo := create_tween()
+		tween_objetivo.tween_interval(5.0)
+		tween_objetivo.tween_property(_objetivo, "modulate:a", 0.0, 1.0)
 
 
 # -----------------------------------------------------------------------------
@@ -81,7 +84,7 @@ func _ready() -> void:
 
 ## Muestra un aviso breve al entrar en el nicho secreto del laberinto.
 func _on_secreto_body_entered(cuerpo: Node3D) -> void:
-	if _secreto_encontrado or not cuerpo.is_in_group("player"):
+	if _aviso_secreto == null or _secreto_encontrado or not cuerpo.is_in_group("player"):
 		return
 
 	_secreto_encontrado = true
@@ -98,7 +101,8 @@ func _on_secreto_body_entered(cuerpo: Node3D) -> void:
 
 ## Oculta el aviso cuando termina su fundido de salida.
 func _ocultar_aviso_secreto() -> void:
-	_aviso_secreto.visible = false
+	if _aviso_secreto != null:
+		_aviso_secreto.visible = false
 
 
 # -----------------------------------------------------------------------------
