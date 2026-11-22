@@ -129,6 +129,71 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -0.09332663), Vector3(0, 0, -0.18665326), Vector3(0, 0, -0.24604292), Vector3(0, 0, -0.30543262), Vector3(0, 0, -0.44505897), Vector3(0, 0, -0.6457718), Vector3(0, 0, 0.061086524), Vector3(0, 0, 0.1308997), Vector3(0, 0, 0), Vector3(0, 0, 0.2792527)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("pecho/barriga inferior/pierna alta izquierda:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.126667, 0.236667, 0.383333, 0.383333, 0.503333, 0.633333, 0.743333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.274315, -0.000067, 0.164727), Vector3(0.274315, -0.000067, -0.219245), Vector3(0.124217, -0.000067, -0.001079), Vector3(0.274315, -0.000067, -0.577038), Vector3(0.274315, -0.000067, 0.20487), Vector3(0.244644, -0.000067, 0.424781), Vector3(0.219005, -0.000067, 0.334114)]
+}
+
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("pecho/barriga inferior/pierna alta izquierda/pierna izquierda baja:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.116667, 0.136667, 0.146667, 0.256667, 0.383333, 0.383333, 0.513333, 0.523333, 0.633333, 0.663333, 0.733333, 0.743333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.1628, -0.85895, 0.043267), Vector3(0.0548, -0.79595, 0.103267), Vector3(-0.0562, -0.79295, 0.043267), Vector3(0.1048, -0.81195, 0.088267), Vector3(0.0858, -0.72895, 0.048267), Vector3(0.0958, -0.83295, 0.098267), Vector3(-0.0642, -0.72895, 0.043267), Vector3(-0.0532, -0.72895, 0.088267), Vector3(0.0618, -0.72895, 0.043267), Vector3(0.0598, -0.75895, 0.078267), Vector3(0.0538, -0.82895, 0.097267), Vector3(0.0528, -0.83895, 0.043267)]
+}
+
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("pecho/barriga inferior/pierna alta izquierda/pierna izquierda baja:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.116667, 0.136667, 0.146667, 0.246667, 0.256667, 0.383333, 0.383333, 0.503333, 0.513333, 0.523333, 0.633333, 0.743333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.274314, -0.000067, 0.423448), Vector3(-0.274314, -0.000067, 0.257642), Vector3(-0.124216, -0.000067, -0.138548), Vector3(-0.274314, -0.000067, 0.013296), Vector3(-0.274314, -0.000067, 0.257642), Vector3(-0.134688, -0.000067, 0.257642), Vector3(-0.274314, -0.000067, 0.257642), Vector3(-0.272569, -0.000067, -0.192653), Vector3(-0.124216, -0.000067, -0.208361), Vector3(-0.274314, -0.000067, -0.129821), Vector3(-0.274314, -0.000067, 0.257642), Vector3(-0.274314, -0.000067, 0.152922)]
+}
+
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("pecho/barriga inferior/pierna alta izquierda:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.126667, 0.146667, 0.236667, 0.383333, 0.383333, 0.503333, 0.513333, 0.633333, 0.643333, 0.743333, 0.753333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.124005, -0.412163, -0.241868), Vector3(0.090369, -0.412163, -0.241868), Vector3(-0.060995, -0.412163, -0.241868), Vector3(-0.117995, -0.343163, -0.248868), Vector3(-0.230995, -0.412163, -0.241868), Vector3(-0.007995, -0.353163, -0.231868), Vector3(-0.00238, -0.354625, -0.232099), Vector3(0.065005, -0.372163, -0.234868), Vector3(0.071005, -0.37389, -0.235141), Vector3(0.131005, -0.391163, -0.237868), Vector3(0.130538, -0.392563, -0.238135)]
+}
+
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("pecho/barriga inferior/pierna alta izquierda/pierna izquierda baja/pie izquierdo bajo2:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.086667, 0.106667, 0.146667, 0.166667, 0.236667, 0.383333, 0.383333, 0.493333, 0.603333, 0.673333, 0.743333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.139626), Vector3(0, 0, -0.340339), Vector3(0, 0, 0.36652), Vector3(0, 0, 0.436333), Vector3(0, 0, 0.305433), Vector3(0, 0, 0.305433), Vector3(0, 0, 0.584686), Vector3(0, 0, 0.212106), Vector3(0, 0, 0.11878), Vector3(0, 0, 0.05939), Vector3(0, 0, 0)]
+}
+
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v4ohi"]
 _data = {
