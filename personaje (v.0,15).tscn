@@ -1,0 +1,618 @@
+[gd_scene format=3 uid="uid://cawqy06asawru"]
+
+[ext_resource type="Texture2D" uid="uid://cvhb2tj588ug8" path="res://textura de sapato.jpg" id="1_hr6g3"]
+[ext_resource type="Texture2D" uid="uid://cjoay5ajcu7pq" path="res://ropa a Rugada.jpg" id="2_v4ohi"]
+
+[sub_resource type="Animation" id="Animation_t2nwa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pecho/barriga inferior/pierna alta derecha:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.15009831, 0, 0.16929694)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pecho/barriga inferior/pierna alta derecha/pierna derecha:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.091, -0.704, -0.049)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pecho/barriga inferior/pierna alta derecha/pierna derecha:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.15009831, 0, -0.2565634)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pecho/barriga inferior/pierna alta derecha:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.11, -0.36, 0.249)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("pecho/barriga inferior/pierna alta derecha/pierna derecha/pie derecho bajo:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.30543262)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("pecho/barriga inferior/pierna alta izquierda/pierna izquierda baja:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.013, -0.828, -0.011)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("pecho/barriga inferior/pierna alta izquierda/pierna izquierda baja:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("pecho/barriga inferior/pierna alta izquierda:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.18325958)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("pecho/barriga inferior/pierna alta izquierda:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.114, -0.34, -0.242)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("pecho/barriga inferior/pierna alta izquierda/pierna izquierda baja/pie izquierdo bajo2:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.27052602)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("pecho/hombro derecho:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.0052359877, -0.31066862)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("pecho/hombro izquierdo:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.14835298)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("sabana de bolsa:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.18849556)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("sabana de bolsa:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.342, 1.784, -0.007)]
+}
+
+[sub_resource type="Animation" id="Animation_hr6g3"]
+resource_name = "caminar "
+length = 2.1333334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pecho/barriga inferior/pierna alta derecha:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.25, 0.36, 0.37, 0.51, 0.62, 0.76666665, 0.86, 0.9, 1.07, 1.2, 1.35, 1.47, 1.57, 1.7, 1.82, 1.94, 2.08),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.15009831, 0, 0.16929694), Vector3(0, 0, 0.37524578), Vector3(-0.029670598, 0, 0.59515727), Vector3(-0.05531005, 0, 0.5044902), Vector3(-0.05162272, 0, 0.49319774), Vector3(0, 0, 0.3351032), Vector3(0, 0, -0.04886922), Vector3(0, 0, -0.40666172), Vector3(0, 0, -0.6161012), Vector3(0, 0, -0.6161012), Vector3(0, 0, -0.44854963), Vector3(0, 0, -0.2443461), Vector3(0, 0, 0.19198622), Vector3(0, 0, 0.49741885), Vector3(0, 0, 0.22340214), Vector3(0, 0, -0.29147), Vector3(0, 0, -0.6370452), Vector3(0, 0, -0.4834562), Vector3(0, 0, -0.24783675)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pecho/barriga inferior/pierna alta derecha/pierna derecha:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.13, 0.14, 0.21, 0.24, 0.25, 0.28, 0.37, 0.48, 0.5, 0.52, 0.53, 0.64, 0.76666665, 1.07, 1.2, 1.35, 1.47, 1.57, 1.7, 1.82, 1.94, 2.08),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.326, -0.755, -0.039), Vector3(-0.116, -0.704, -0.018), Vector3(-0.168, -0.704, 0.001), Vector3(-0.14, -0.704, -0.004), Vector3(-0.067, -0.704, 0.002), Vector3(-0.016, -0.704, 0.009), Vector3(0.005, -0.704, -0.012), Vector3(-0.027, -0.734, -0.014), Vector3(-0.151, -0.815, -0.005), Vector3(0.06, -0.831, 0.022), Vector3(0.076, -0.834, -0.004), Vector3(-0.032, -0.771, 0.011), Vector3(-0.143, -0.768, -0.049), Vector3(0.018, -0.787, -0.004), Vector3(0.009, -0.808, 0.006), Vector3(-0.201, -0.748, 0.006), Vector3(-0.201, -0.748, 0.006000001), Vector3(-0.028, -0.778, 0.006), Vector3(-0.028000005, -0.778, 0.006000001), Vector3(-0.028000005, -0.778, 0.006000001), Vector3(-0.028000005, -0.778, 0.006000001), Vector3(-0.111, -0.818, 0.006), Vector3(-0.214, -0.746, 0.006), Vector3(-0.124, -0.746, 0.006)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pecho/barriga inferior/pierna alta derecha/pierna derecha:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.13, 0.14, 0.25, 0.37, 0.5, 0.52, 0.53, 0.63, 0.64, 0.76666665, 1.07, 1.2, 1.35, 1.47, 1.57, 1.7, 1.82, 1.94, 2.08),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.09599311, 0, -0.8063421), Vector3(0.0017453292, 0, -0.45029494), Vector3(0, 0, -0.4537856), Vector3(0, 0, -0.3874631), Vector3(0, 0, 0), Vector3(0, 0, -0.37699112), Vector3(0, 0, 0.16580628), Vector3(0, 0, 0), Vector3(0.15009831, 0, -0.39618975), Vector3(0, 0, -0.2443461), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, -0.6021386), Vector3(0, 0, -0.42760566), Vector3(0, 0, -0.10995574), Vector3(0, 0, -0.10995574), Vector3(0, 0, -0.10995574), Vector3(0, 0, -0.10995574), Vector3(0, 0, -0.20594884), Vector3(0, 0, -0.54105204), Vector3(0, 0, -0.40142572)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pecho/barriga inferior/pierna alta derecha:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.13, 0.25, 0.26, 0.36, 0.37, 0.51, 0.53, 0.62, 0.76666665, 0.86, 0.9, 1.07, 1.2, 1.35, 1.47, 1.57, 1.7, 1.82, 1.94, 2.08),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.35, 0.232), Vector3(0.11, -0.36, 0.249), Vector3(0.11561538, -0.36146155, 0.24876922), Vector3(0.183, -0.379, 0.246), Vector3(0.189, -0.3807273, 0.24572729), Vector3(0.249, -0.398, 0.243), Vector3(0.24853334, -0.3994, 0.24273333), Vector3(0.242, -0.419, 0.239), Vector3(0.20836367, -0.419, 0.239), Vector3(0.057, -0.419, 0.239), Vector3(-0.11299999, -0.419, 0.239), Vector3(-0.138, -0.419, 0.239), Vector3(-0.138, -0.419, 0.239), Vector3(-0.138, -0.419, 0.239), Vector3(-0.138, -0.419, 0.239), Vector3(0.012, -0.419, 0.239), Vector3(0.129, -0.419, 0.239), Vector3(0.129, -0.419, 0.239), Vector3(-0.036, -0.419, 0.239), Vector3(-0.191, -0.419, 0.239), Vector3(-0.191, -0.419, 0.239), Vector3(-0.191, -0.419, 0.239)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("pecho/barriga inferior/pierna alta derecha/pierna derecha/pie derecho bajo:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.22, 0.29, 0.36, 0.37, 0.47, 0.49, 0.53, 0.55, 0.62, 0.76666665, 1.2, 1.35, 1.47, 1.57, 1.7, 1.82, 1.94, 2.08),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.09332663), Vector3(0, 0, -0.18665326), Vector3(0, 0, -0.24604292), Vector3(0, 0, -0.30543262), Vector3(0, 0, 0), Vector3(0, 0, -0.44505897), Vector3(0, 0, -0.43633232), Vector3(0, 0, 0.061086524), Vector3(0, 0, 0.1308997), Vector3(0, 0, 0), Vector3(0, 0, 0.2792527), Vector3(0, 0, 0.44505897), Vector3(0, 0, 0), Vector3(0, 0, -0.21816616), Vector3(0, 0, -0.12217305), Vector3(0, 0, 0.36128315), Vector3(0, 0, 0.3525565), Vector3(0, 0, 0), Vector3(0, 0, 0.3577925)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("pecho/barriga inferior/pierna alta izquierda/pierna izquierda baja:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.51, 0.6, 0.7, 0.94, 1.07, 1.23, 1.35, 1.47, 1.57, 1.7, 1.82, 1.94),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.122, -0.828, -0.011), Vector3(-0.186, -0.828, -0.011), Vector3(-0.119, -0.828, -0.011), Vector3(-0.291, -0.623, -0.011), Vector3(-0.176, -0.875, -0.011), Vector3(-0.176, -0.875, -0.011), Vector3(-0.086, -0.875, -0.011), Vector3(-0.076, -0.8, -0.011), Vector3(-0.061, -0.8, -0.011), Vector3(-0.061, -0.8, -0.011), Vector3(-0.261, -0.743, -0.011), Vector3(-0.434, -0.696, -0.011), Vector3(-0.198, -0.911, -0.011), Vector3(-0.271, -0.734, -0.011)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("pecho/barriga inferior/pierna alta izquierda/pierna izquierda baja:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.51, 0.6, 0.7, 0.94, 1.07, 1.23, 1.35, 1.47, 1.57, 1.7, 1.82, 1.94),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.30543262), Vector3(0, 0, -0.42760566), Vector3(0, 0, -0.30543262), Vector3(0, 0, -0.7766715), Vector3(0, 0, -0.24085544), Vector3(0, 0, -0.24085544), Vector3(0, 0, -0.24085544), Vector3(0, 0, -0.18325958), Vector3(0, 0, -0.27925268), Vector3(0, 0, -0.1972222), Vector3(0, 0, -0.5637413), Vector3(0, 0, -1.2042772), Vector3(0, 0, -0.5235988), Vector3(0, 0, -0.6667158)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("pecho/barriga inferior/pierna alta izquierda:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.21, 0.37, 0.51, 0.6, 0.7, 0.82, 0.94, 1.07, 1.23, 1.35, 1.47, 1.57, 1.7, 1.82, 1.94, 2.08),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.36128315), Vector3(0, 0, -0.5061455), Vector3(0, 0, -0.4886922), Vector3(0, 0, -0.44505897), Vector3(0, 0, 0.27925268), Vector3(0, 0, 0.5235988), Vector3(0, 0, 0.8290314), Vector3(0, 0, 0.82903135), Vector3(0, 0, 0.82903135), Vector3(0, 0, 0.36128315), Vector3(0, 0, 0.23212878), Vector3(0, 0, -0.16929694), Vector3(0, 0, -0.53232545), Vector3(0, 0, -0.27052602), Vector3(0, 0, 0.27925268), Vector3(0, 0, 0.8813913), Vector3(0, 0, 0.75049156), Vector3(0, 0, 0.6981317)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("pecho/barriga inferior/pierna alta izquierda:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.12, 0.21, 0.37, 0.51, 0.53, 0.7, 0.72, 0.82, 0.83, 0.94, 1.1, 1.23, 1.35, 1.47, 1.57, 1.7, 1.82, 1.94, 2.08),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.086, -0.34, -0.242), Vector3(0.06683334, -0.34, -0.242), Vector3(0.068, -0.34, -0.242), Vector3(-0.052, -0.34, -0.242), Vector3(-0.013, -0.34, -0.242), Vector3(0.114, -0.34, -0.242), Vector3(0.109, -0.34, -0.242), Vector3(0.114, -0.34, -0.242), Vector3(0.342, -0.356, -0.242), Vector3(0.344, -0.435, -0.242), Vector3(0.324, -0.435, -0.242), Vector3(0.324, -0.435, -0.242), Vector3(0.152, -0.435, -0.242), Vector3(0.152, -0.435, -0.242), Vector3(0.032, -0.435, -0.242), Vector3(-0.225, -0.435, -0.242), Vector3(-0.18, -0.435, -0.242), Vector3(0.225, -0.435, -0.242), Vector3(0.225, -0.435, -0.242), Vector3(0.225, -0.435, -0.242), Vector3(0.225, -0.435, -0.242)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("pecho/barriga inferior/pierna alta izquierda/pierna izquierda baja/pie izquierdo bajo2:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.23, 0.6, 0.82, 0.94, 1.07, 1.1, 1.35, 1.47, 1.7, 1.71, 1.82, 1.94, 2.08),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.27925268), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, -0.27052602), Vector3(0, 0, -0.6806784), Vector3(0, 0, -0.6806784), Vector3(0, 0, 0), Vector3(0, 0, -0.1134464), Vector3(0, 0, 0.39618975), Vector3(0, 0, 0.39618972), Vector3(0, 0, 0.47472957), Vector3(0, 0, 0.6632251), Vector3(0, 0, -0.26529005), Vector3(0, 0, -0.26529005), Vector3(0, 0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("pecho/hombro derecho:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.13, 0.36, 0.42, 0.56, 0.78, 1.11, 1.26, 1.33, 1.47, 1.68, 1.77, 1.88, 2.1333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.0052359877, -0.31066862), Vector3(0, 0, -0.43633232), Vector3(0, 0, -0.567232), Vector3(0, 0, -0.31415927), Vector3(0, 0, 0.017453292), Vector3(0, 0, 0.4712389), Vector3(0, 0, 0.14486232), Vector3(0, 0, 0.09599311), Vector3(0, 0, -0.061086524), Vector3(0, 0, -0.5009095), Vector3(0, 0, -0.034906585), Vector3(0, 0, 0.21293017), Vector3(0, 0, 0.40142572), Vector3(0, 0, 0.15358898)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("pecho/hombro izquierdo:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.19, 0.33, 0.59, 0.83, 1.15, 1.25, 1.5, 1.65, 1.87, 2.07, 2.1333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.14835298), Vector3(0, 0, 0.33161256), Vector3(0, 0, 0.36128315), Vector3(0, 0, 0.07853982), Vector3(0, 0, -0.3228859), Vector3(0, 0, -0.28797933), Vector3(0, 0, 0.012217305), Vector3(0, 0, 0.28797933), Vector3(0, 0, 0.02617994), Vector3(0, 0, -0.3228859), Vector3(0, 0, -0.017453292), Vector3(0, 0, 0.034906585)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("sabana de bolsa:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.14, 0.25, 0.41, 0.52, 0.8, 0.93, 1.09, 1.46, 1.48, 1.61, 1.79, 1.93, 2.07),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.18849556), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, -0.20071286), Vector3(0, 0, -0.2565634), Vector3(0, 0, 0), Vector3(0, 0, -0.16580628), Vector3(0, 0, -0.27925268), Vector3(0, 0, 0), Vector3(0, 0, -0.25307274), Vector3(0, 0, -0.16580628), Vector3(0, 0, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("sabana de bolsa:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.14, 0.25, 0.41, 0.52, 0.8, 0.93, 1.09, 1.46, 1.48, 1.61, 1.79, 1.93, 2.07),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.342, 1.784, -0.007), Vector3(-0.217, 1.784, -0.007), Vector3(-0.217, 1.784, -0.007), Vector3(-0.217, 1.784, -0.007), Vector3(-0.217, 1.784, -0.007), Vector3(-0.324, 1.784, -0.007), Vector3(-0.349, 1.784, -0.007), Vector3(-0.259, 1.784, -0.007), Vector3(-0.309, 1.784, -0.007), Vector3(-0.359, 1.784, -0.007), Vector3(-0.259, 1.784, -0.007), Vector3(-0.359, 1.784, -0.007), Vector3(-0.314, 1.784, -0.007), Vector3(-0.259, 1.784, -0.007)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v4ohi"]
+_data = {
+&"RESET": SubResource("Animation_t2nwa"),
+&"caminar ": SubResource("Animation_hr6g3")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7espp"]
+albedo_texture = ExtResource("2_v4ohi")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bpo87"]
+material = SubResource("StandardMaterial3D_7espp")
+radius = 0.35986328
+height = 1.1427002
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkim7"]
+albedo_texture = ExtResource("1_hr6g3")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wao0y"]
+material = SubResource("StandardMaterial3D_bkim7")
+radius = 0.33154297
+height = 0.8230896
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqkgv"]
+albedo_texture = ExtResource("1_hr6g3")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gyc6d"]
+material = SubResource("StandardMaterial3D_hqkgv")
+radius = 0.1171875
+height = 1.1060181
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpo87"]
+albedo_texture = ExtResource("1_hr6g3")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hqkgv"]
+material = SubResource("StandardMaterial3D_bpo87")
+radius = 0.12451172
+height = 1.0905762
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vigtd"]
+albedo_texture = ExtResource("2_v4ohi")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ilyhr"]
+material = SubResource("StandardMaterial3D_vigtd")
+size = Vector3(0.37342072, 0.26693726, 0.26135254)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r708n"]
+albedo_texture = ExtResource("1_hr6g3")
+
+[sub_resource type="BoxMesh" id="BoxMesh_10236"]
+material = SubResource("StandardMaterial3D_r708n")
+size = Vector3(0.54566956, 0.06262207, 0.2633896)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hr6g3"]
+albedo_texture = ExtResource("2_v4ohi")
+
+[sub_resource type="BoxMesh" id="BoxMesh_uo844"]
+material = SubResource("StandardMaterial3D_hr6g3")
+size = Vector3(0.38427734, 0.256073, 0.12640381)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tv8a"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r708n"]
+material = SubResource("StandardMaterial3D_2tv8a")
+size = Vector3(0.17565918, 0.12219238, 0.2586708)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qx4q"]
+albedo_texture = ExtResource("1_hr6g3")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_g7b7a"]
+material = SubResource("StandardMaterial3D_6qx4q")
+radius = 0.11376953
+height = 1.1038513
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xrv66"]
+albedo_texture = ExtResource("1_hr6g3")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6qx4q"]
+material = SubResource("StandardMaterial3D_xrv66")
+radius = 0.11328125
+height = 1.1177979
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xs6c"]
+albedo_texture = ExtResource("2_v4ohi")
+
+[sub_resource type="BoxMesh" id="BoxMesh_sae8j"]
+material = SubResource("StandardMaterial3D_6xs6c")
+size = Vector3(0.3788452, 0.25157166, 0.2614412)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8tfs"]
+albedo_texture = ExtResource("1_hr6g3")
+
+[sub_resource type="BoxMesh" id="BoxMesh_142ku"]
+material = SubResource("StandardMaterial3D_c8tfs")
+size = Vector3(0.54026794, 0.06362915, 0.2711924)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4ohi"]
+albedo_texture = ExtResource("2_v4ohi")
+
+[sub_resource type="BoxMesh" id="BoxMesh_u7sl5"]
+material = SubResource("StandardMaterial3D_v4ohi")
+size = Vector3(0.38562012, 0.12677002, 0.25576973)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx0w5"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c8tfs"]
+material = SubResource("StandardMaterial3D_tx0w5")
+size = Vector3(0.17726135, 0.12103653, 0.2521727)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3vqlf"]
+height = 1.3774414
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xrv66"]
+radius = 0.39404297
+height = 3.65271
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ki416"]
+height = 1.3623047
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jm7pk"]
+radius = 0.3959961
+height = 3.6292725
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_j82wg"]
+radius = 0.27441406
+height = 0.67993164
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyc6d"]
+albedo_texture = ExtResource("2_v4ohi")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_g7b7a"]
+material = SubResource("StandardMaterial3D_gyc6d")
+top_radius = 0.30664063
+bottom_radius = 0.30664063
+height = 0.14453125
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sl10y"]
+albedo_texture = ExtResource("2_v4ohi")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xg5yy"]
+material = SubResource("StandardMaterial3D_sl10y")
+radius = 0.24365234
+height = 0.59106445
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_itk1w"]
+albedo_texture = ExtResource("2_v4ohi")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nmtwk"]
+material = SubResource("StandardMaterial3D_itk1w")
+radius = 0.27685547
+height = 0.55371094
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qoy35"]
+albedo_texture = ExtResource("1_hr6g3")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ned53"]
+material = SubResource("StandardMaterial3D_qoy35")
+radius = 0.22802734
+height = 1.0576172
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_psqud"]
+albedo_texture = ExtResource("2_v4ohi")
+
+[sub_resource type="BoxMesh" id="BoxMesh_g7b7a"]
+material = SubResource("StandardMaterial3D_psqud")
+size = Vector3(0.13513184, 1.0292969, 0.79644775)
+
+[node name="Node3D" type="Node3D" unique_id=140242520]
+transform = Transform3D(0.00768963, 0, 0.88996667, 0, 0.8899996, 0, -0.88996667, 0, 0.00768963, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1238367518]
+libraries/ = SubResource("AnimationLibrary_v4ohi")
+
+[node name="pecho" type="MeshInstance3D" parent="." unique_id=1603465271]
+transform = Transform3D(0.9999922, 0, 1.4901161e-08, 0, 0.9999883, 0, -1.4901161e-08, 0, 0.9999922, 0.15175031, 2.1735067, -0.033241224)
+mesh = SubResource("CapsuleMesh_bpo87")
+
+[node name="barriga inferior" type="MeshInstance3D" parent="pecho" unique_id=1717699423]
+transform = Transform3D(1.0000005, 0, 0, 0, 1.0000005, 0, 0, 0, 1.0000005, 0.0033012629, -0.5097326, -0.0012913682)
+mesh = SubResource("CapsuleMesh_wao0y")
+
+[node name="pierna alta derecha" type="MeshInstance3D" parent="pecho/barriga inferior" unique_id=1995481764]
+transform = Transform3D(0.98569703, -0.1684864, 0, 0.16659386, 0.97460335, 0.14953436, -0.025194952, -0.1473949, 0.9887498, 0.11, -0.36, 0.249)
+mesh = SubResource("CapsuleMesh_gyc6d")
+
+[node name="pierna derecha" type="MeshInstance3D" parent="pecho/barriga inferior/pierna alta derecha" unique_id=414669226]
+transform = Transform3D(0.967281, 0.25376526, 0, -0.25090823, 0.95641965, -0.14953734, -0.037946302, 0.14464487, 0.98876953, -0.091, -0.704, -0.049)
+mesh = SubResource("CapsuleMesh_hqkgv")
+
+[node name="pie derecho bajo" type="MeshInstance3D" parent="pecho/barriga inferior/pierna alta derecha/pierna derecha" unique_id=1991786884]
+transform = Transform3D(0.95371693, 0.3007058, 0, -0.3007058, 0.95371693, 0, 0, 0, 1, 0.0596333, -0.43183216, 0.0062727034)
+mesh = SubResource("BoxMesh_ilyhr")
+
+[node name="planta de pie derecho" type="MeshInstance3D" parent="pecho/barriga inferior/pierna alta derecha/pierna derecha/pie derecho bajo" unique_id=1098266421]
+transform = Transform3D(1, 5.977927e-08, -8.381903e-08, 5.707261e-08, 0.9999971, -8.381903e-09, -8.754432e-08, 1.4901161e-08, 0.99999636, 0.09008302, -0.10231607, 0.00034582615)
+mesh = SubResource("BoxMesh_10236")
+
+[node name="pie derecho subida de planta" type="MeshInstance3D" parent="pecho/barriga inferior/pierna alta derecha/pierna derecha/pie derecho bajo" unique_id=2040296995]
+transform = Transform3D(1, 5.5879354e-09, 5.9662852e-09, 1.9790605e-09, 0.004315909, 0.99999034, -7.450581e-09, -0.99999034, 0.004315912, 0.15210457, -0.0074023604, -0.00084611773)
+mesh = SubResource("BoxMesh_uo844")
+
+[node name="lengueta del pie derecho" type="MeshInstance3D" parent="pecho/barriga inferior/pierna alta derecha/pierna derecha/pie derecho bajo" unique_id=1960640869]
+transform = Transform3D(0.57181746, 0.820381, 0, -0.8203809, 0.57181734, -9.313226e-10, -7.450581e-09, -4.656613e-09, 0.99999976, 0.107151404, 0.07991028, 0.00036725402)
+mesh = SubResource("BoxMesh_r708n")
+
+[node name="pierna alta izquierda" type="MeshInstance3D" parent="pecho/barriga inferior" unique_id=2035042029]
+transform = Transform3D(0.9832473, 0.18223266, 0, -0.18223411, 0.9832395, 0, 0, 0, 0.9999895, 0.114, -0.34, -0.242)
+mesh = SubResource("CapsuleMesh_g7b7a")
+
+[node name="pierna izquierda baja" type="MeshInstance3D" parent="pecho/barriga inferior/pierna alta izquierda" unique_id=88066333]
+transform = Transform3D(1.0000151, 0, 0, 0, 1.0000265, 0, 0, 0, 1.0000179, 0.013, -0.828, -0.011)
+mesh = SubResource("CapsuleMesh_6qx4q")
+
+[node name="pie izquierdo bajo2" type="MeshInstance3D" parent="pecho/barriga inferior/pierna alta izquierda/pierna izquierda baja" unique_id=1350055764]
+transform = Transform3D(0.96362996, 0.26723826, 0, -0.26723826, 0.96362996, 0, 0, 0, 0.99999964, 0.05562161, -0.40660548, 0.0047478974)
+mesh = SubResource("BoxMesh_sae8j")
+
+[node name="planta de pie izquierdo" type="MeshInstance3D" parent="pecho/barriga inferior/pierna alta izquierda/pierna izquierda baja/pie izquierdo bajo2" unique_id=239102889]
+transform = Transform3D(1.000002, 0, -5.5879354e-09, 0, 1, 0, 5.5879354e-09, 0, 1.000002, 0.08311829, -0.10310581, -0.00021836162)
+mesh = SubResource("BoxMesh_142ku")
+
+[node name="pie izquierdo subida de planta" type="MeshInstance3D" parent="pecho/barriga inferior/pierna alta izquierda/pierna izquierda baja/pie izquierdo bajo2" unique_id=643289613]
+transform = Transform3D(1.0000007, 0, -3.7252903e-09, 0, 0.99999994, 0, 3.7252903e-09, 0, 1.0000007, 0.1391797, -0.016324252, 0.00094366074)
+mesh = SubResource("BoxMesh_u7sl5")
+
+[node name="lengueta de pie izquierdo" type="MeshInstance3D" parent="pecho/barriga inferior/pierna alta izquierda/pierna izquierda baja/pie izquierdo bajo2" unique_id=1439711757]
+transform = Transform3D(0.613594, 0.7896225, -3.7252903e-09, -0.789622, 0.61359364, 0, 2.3283064e-09, 2.3283064e-09, 1.0000008, 0.0947181, 0.069147885, 0.0009823143)
+mesh = SubResource("BoxMesh_c8tfs")
+
+[node name="hombro derecho" type="MeshInstance3D" parent="pecho" unique_id=1464166146]
+transform = Transform3D(0.28563637, 0.09170806, 0.0015707966, -0.09170906, 0.28564107, 0, -0.0014956022, -0.00048018672, 0.2999973, -0.023749143, 0.19598031, 0.466166)
+mesh = SubResource("CapsuleMesh_3vqlf")
+
+[node name="brazo derecho" type="MeshInstance3D" parent="pecho/hombro derecho" unique_id=1425208244]
+transform = Transform3D(1, 0, 0, 0, 1.0000026, 0, 0, 0, 1, 0, -2.015337, 0)
+mesh = SubResource("CapsuleMesh_xrv66")
+
+[node name="hombro izquierdo" type="MeshInstance3D" parent="pecho" unique_id=224187794]
+transform = Transform3D(0.29670516, -0.044343002, 0, 0.04434288, 0.296706, 0, 0, 0, 0.3000003, -0.02963145, 0.19093347, -0.4813113)
+mesh = SubResource("CapsuleMesh_ki416")
+
+[node name="brazo izquierdo" type="MeshInstance3D" parent="pecho/hombro izquierdo" unique_id=268022056]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00016841292, -2.0192914, -0.01951468)
+mesh = SubResource("CapsuleMesh_jm7pk")
+
+[node name="cabeza" type="MeshInstance3D" parent="pecho" unique_id=714224132]
+transform = Transform3D(0.9999952, 0, -4.656613e-09, 0, 0.9999931, 0, 4.656613e-09, 0, 0.9999952, 0, 0.80578566, 0)
+mesh = SubResource("CapsuleMesh_j82wg")
+
+[node name="borde" type="MeshInstance3D" parent="pecho/cabeza" unique_id=294117792]
+transform = Transform3D(0.99998116, 0, -2.6077032e-08, 0, 0.99998486, 0, 2.6077032e-08, 0, 0.99998116, -0.0010583997, 0.16288495, 0.01917724)
+mesh = SubResource("CylinderMesh_g7b7a")
+
+[node name="parte de arriba del gorro" type="MeshInstance3D" parent="pecho/cabeza/borde" unique_id=773833620]
+transform = Transform3D(1.0000039, 0, 2.7939677e-09, 0, 1.0000031, 0, -2.7939677e-09, 0, 1.0000039, 0.017230302, 0.1153512, 0.04690601)
+mesh = SubResource("CapsuleMesh_xg5yy")
+
+[node name="parte baja del gorro2" type="MeshInstance3D" parent="pecho/cabeza/borde/parte de arriba del gorro" unique_id=1578340290]
+transform = Transform3D(0.99999636, 0, -5.5879354e-09, 0, 0.999997, 0, 5.5879354e-09, 0, 0.99999636, -0.015795156, -0.04625988, -0.08249955)
+mesh = SubResource("CapsuleMesh_nmtwk")
+
+[node name="bolsa" type="MeshInstance3D" parent="pecho" unique_id=491486579]
+transform = Transform3D(0.99993366, -0.008639912, -0.008584781, 0.008639894, 0.00636586, 0.9999446, -0.008584769, -0.99994993, 0.00644008, -0.49446273, 0.2688408, 0.0005272329)
+mesh = SubResource("CapsuleMesh_ned53")
+
+[node name="sabana de bolsa" type="MeshInstance3D" parent="." unique_id=42806052]
+transform = Transform3D(0.9822713, 0.18737671, 0, -0.18737827, 0.9822631, 0, 0, 0, 0.9999838, -0.342, 1.784, -0.007)
+mesh = SubResource("BoxMesh_g7b7a")
