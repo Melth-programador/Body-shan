@@ -96,8 +96,10 @@ func _unhandled_input(evento: InputEvent) -> void:
 		return
 
 	if evento.is_action_pressed("ui_cancel"):
-		_volver_al_menu()
+		# Marcar el evento antes de cambiar de escena evita usar un viewport
+		# nulo cuando este nodo ya ha salido del árbol.
 		get_viewport().set_input_as_handled()
+		_volver_al_menu()
 
 
 ## _gui_input() recibe ratón y toques sobre la página. Los botones tienen su

@@ -1,13 +1,13 @@
 # =============================================================================
-# mobile_controls.gd - Botones táctiles de salto y carrera para body-shan
+# mobile_controls.gd - Botones táctiles de salto, carrera, agacharse y wall jump
 # =============================================================================
-# Este script se adjunta al nodo Control "MobileControls" de "mapa.tscn".
+# Este script se adjunta al nodo Control "MobileControls" de "escenario.tscn".
 #
 # QUÉ HACE:
 # - Detecta si el juego se está ejecutando en un dispositivo táctil (móvil).
 # - Muestra u oculta los controles táctiles según esa detección, pudiendo
 #   forzarlos visibles en escritorio con "force_show_on_desktop".
-# - Conecta los botones "SALTO" y "CORRER" con el jugador.
+# - Conecta los botones "SALTO", "CORRER", "AGACHARSE" y "WALL JUMP".
 #
 # CÓMO SE COMUNICA CON EL JUGADOR:
 # El jugador (CharacterBody3D) pertenece al grupo "player". En lugar de
@@ -16,9 +16,13 @@
 # conocer la ruta exacta del jugador.
 #
 # CONTROLES:
-#   - Botón SALTO  : pide un salto por cada pulsación (request_jump()).
-#   - Botón CORRER : mantiene la carrera mientras se mantiene pulsado
-#                    (set_touch_sprint(true/false)).
+#   - Botón SALTO     : pide un salto por cada pulsación (request_jump()).
+#   - Botón CORRER    : mantiene la carrera mientras se mantiene pulsado
+#                       (set_touch_sprint(true/false)).
+#   - Botón AGACHARSE : mantiene el agachado mientras se mantiene pulsado
+#                       (set_touch_crouch(true/false)).
+#   - Botón WALL JUMP : pide un salto de pared por cada pulsación
+#                       (request_wall_jump()).
 # =============================================================================
 
 # Hereda de Control: nodo de interfaz que puede contener botones y recibir
@@ -78,6 +82,17 @@ func _ready() -> void:
 	$SprintButton.button_down.connect(_on_sprint_button_down)
 	$SprintButton.button_up.connect(_on_sprint_button_up)
 
+	# Los botones nuevos se conectan solo si existen en la escena. Así este
+	# script sigue funcionando en escenas antiguas que no los tengan.
+	var crouch_button := get_node_or_null("CrouchButton") as Button
+	if crouch_button:
+		crouch_button.button_down.connect(_on_crouch_button_down)
+		crouch_button.button_up.connect(_on_crouch_button_up)
+
+	var wall_jump_button := get_node_or_null("WallJumpButton") as Button
+	if wall_jump_button:
+		wall_jump_button.button_down.connect(_on_wall_jump_button_down)
+
 
 ## _exit_tree() se ejecuta al salir de la escena. Si el botón de correr seguía
 ## pulsado (por ejemplo, al cambiar de escena), se avisa al jugador para que
@@ -85,6 +100,7 @@ func _ready() -> void:
 func _exit_tree() -> void:
 	if _is_touch_device or force_show_on_desktop:
 		get_tree().call_group("player", "set_touch_sprint", false)
+		get_tree().call_group("player", "set_touch_crouch", false)
 
 
 # -----------------------------------------------------------------------------
@@ -105,3 +121,20 @@ func _on_sprint_button_down() -> void:
 ## Desactiva la carrera al soltar el botón.
 func _on_sprint_button_up() -> void:
 	get_tree().call_group("player", "set_touch_sprint", false)
+
+
+## Mantiene el agachado mientras el botón esté pulsado.
+func _on_crouch_button_down() -> void:
+	get_tree().call_group("player", "set_touch_crouch", true)
+
+
+## Deja de agacharse al soltar el botón. Si no hay espacio para levantarse,
+## el jugador seguirá agachado hasta que pueda.
+func _on_crouch_button_up() -> void:
+	get_tree().call_group("player", "set_touch_crouch", false)
+
+
+## Pide un wall jump. Solo se aplica si el jugador está en el aire tocando
+## una pared; en caso contrario, la petición se descarta.
+func _on_wall_jump_button_down() -> void:
+	get_tree().call_group("player", "request_wall_jump")

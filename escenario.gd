@@ -8,11 +8,12 @@
 #   muestra el mensaje "¡META ALCANZADA!" con un fundido.
 # - Muestra un objetivo breve al empezar y un aviso al encontrar el secreto
 #   del laberinto.
+# - Actualiza el marcador de vida y muestra un destello rojo al recibir daño.
 # - Permite volver al menú de inicio con el botón MENÚ (o Escape).
 #
-# El resto del comportamiento (movimiento, cámara, salto, carrera y
-# reaparición si se cae) lo aportan personaje.gd, camara.gd y
-# mobile_controls.gd, igual que en el mapa original.
+# El resto del comportamiento (movimiento, cámara, salto, carrera, agacharse,
+# wall jump, vida y enemigos) lo aportan personaje.gd, camara.gd,
+# mobile_controls.gd y enemigo.gd, igual que en el mapa original.
 # =============================================================================
 
 extends Node3D
@@ -33,9 +34,11 @@ extends Node3D
 @onready var _mensaje: Control = $Interfaz/Mensaje
 @onready var _meta: Area3D = $Meta
 @onready var _boton_menu: Button = $Interfaz/BotonMenu
-@onready var _objetivo: Label = get_node_or_null("Interfaz/Objetivo") as Label
-@onready var _aviso_secreto: Label = get_node_or_null("Interfaz/AvisoSecreto") as Label
-@onready var _secreto: Area3D = get_node_or_null("Secreto") as Area3D
+@onready var _objetivo: Label = $Interfaz/Objetivo
+@onready var _aviso_secreto: Label = $Interfaz/AvisoSecreto
+@onready var _secreto: Area3D = $Secreto
+@onready var _vida: Label = $Interfaz/Vida
+@onready var _dano_flash: ColorRect = $Interfaz/DanoFlash
 
 
 # -----------------------------------------------------------------------------
@@ -51,6 +54,9 @@ var _secreto_encontrado: bool = false
 ## Evita pedir el cambio de escena más de una vez.
 var _saliendo: bool = false
 
+## Vida mostrada en el fotograma anterior, para detectar cuándo baja.
+var _vida_anterior: int = -1
+
 
 # -----------------------------------------------------------------------------
 # MÉTODOS DEL CICLO DE VIDA
@@ -63,19 +69,55 @@ func _ready() -> void:
 
 	# Area3D emite body_entered cuando un cuerpo físico entra en su volumen.
 	_meta.body_entered.connect(_on_meta_body_entered)
-	# El secreto es opcional: algunas versiones del escenario no lo incluyen.
-	if _secreto != null:
-		_secreto.body_entered.connect(_on_secreto_body_entered)
+	_secreto.body_entered.connect(_on_secreto_body_entered)
 
 	# Botón para volver al menú de inicio.
 	_boton_menu.pressed.connect(_volver_al_menu)
 
+	# La interfaz de vida escucha al jugador. Se usa connect() por nombre de
+	# señal para no acoplar este script al tipo concreto de personaje.
+	var jugador := get_tree().get_first_node_in_group("player")
+	if jugador:
+		if jugador.has_signal("health_changed"):
+			jugador.connect("health_changed", _actualizar_vida)
+		_actualizar_vida(
+			int(jugador.call("get_health")),
+			int(jugador.call("get_max_health")))
+
 	# El objetivo se muestra unos segundos y luego se desvanece solo.
-	if _objetivo != null:
-		_objetivo.modulate.a = 1.0
-		var tween_objetivo := create_tween()
-		tween_objetivo.tween_interval(5.0)
-		tween_objetivo.tween_property(_objetivo, "modulate:a", 0.0, 1.0)
+	_objetivo.modulate.a = 1.0
+	var tween_objetivo := create_tween()
+	tween_objetivo.tween_interval(5.0)
+	tween_objetivo.tween_property(_objetivo, "modulate:a", 0.0, 1.0)
+
+
+# -----------------------------------------------------------------------------
+# VIDA DEL JUGADOR
+# -----------------------------------------------------------------------------
+
+## Actualiza el marcador de vida. Se pone rojo intenso cuando queda poca.
+func _actualizar_vida(actual: int, maxima: int) -> void:
+	_vida.text = "VIDA  %d/%d" % [actual, maxima]
+
+	if actual <= 1:
+		_vida.modulate = Color(1.0, 0.35, 0.3, 1.0)
+	else:
+		_vida.modulate = Color(1.0, 1.0, 1.0, 1.0)
+
+	# Si la vida ha bajado, se muestra un destello rojo en pantalla.
+	if _vida_anterior >= 0 and actual < _vida_anterior:
+		_mostrar_destello_dano()
+	_vida_anterior = actual
+
+
+## Destello rojo breve para avisar de que el jugador ha recibido daño.
+func _mostrar_destello_dano() -> void:
+	_dano_flash.visible = true
+	_dano_flash.color.a = 0.35
+
+	var tween := create_tween()
+	tween.tween_property(_dano_flash, "color:a", 0.0, 0.45)
+	tween.tween_callback(func() -> void: _dano_flash.visible = false)
 
 
 # -----------------------------------------------------------------------------
@@ -84,7 +126,7 @@ func _ready() -> void:
 
 ## Muestra un aviso breve al entrar en el nicho secreto del laberinto.
 func _on_secreto_body_entered(cuerpo: Node3D) -> void:
-	if _aviso_secreto == null or _secreto_encontrado or not cuerpo.is_in_group("player"):
+	if _secreto_encontrado or not cuerpo.is_in_group("player"):
 		return
 
 	_secreto_encontrado = true
@@ -101,8 +143,7 @@ func _on_secreto_body_entered(cuerpo: Node3D) -> void:
 
 ## Oculta el aviso cuando termina su fundido de salida.
 func _ocultar_aviso_secreto() -> void:
-	if _aviso_secreto != null:
-		_aviso_secreto.visible = false
+	_aviso_secreto.visible = false
 
 
 # -----------------------------------------------------------------------------
@@ -130,8 +171,10 @@ func _unhandled_input(evento: InputEvent) -> void:
 		return
 
 	if evento.is_action_pressed("ui_cancel"):
-		_volver_al_menu()
+		# Se marca el evento como atendido ANTES de cambiar de escena: al
+		# cambiar, este nodo sale del árbol y get_viewport() devolvería null.
 		get_viewport().set_input_as_handled()
+		_volver_al_menu()
 
 
 # -----------------------------------------------------------------------------
